@@ -145,6 +145,6 @@ $result = mysqli_query($conn, "SELECT * FROM siswa");
     <hr class="text-gray-300 my-12 border-t-1.5 w-full">
     <div class="gap-2 flex justify-end">
         <button type="submit" class="bg-white text-blue-500 outline-1 px-4 py-2 mb-32 rounded">Batal Simpan</button>
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 mb-32 rounded">Simpan Perubahan</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 mb-32 rounded">Simpan Data</button>
     </div>
 </div>
