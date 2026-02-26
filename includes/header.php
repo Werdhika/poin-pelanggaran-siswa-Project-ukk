@@ -14,7 +14,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-20 items-center justify-between">
                 <div class="flex-1 md:flex md:items-center md:gap-12">
-                    <a href="#" class="block text-2xl text-gray-900 font-heading font-bold">
+                    <a href="#" class="block text-2xl text-gray-900 font-urbanist font-bold">
                         e-Pelanggaran
                     </a>
                 </div>
@@ -23,16 +23,16 @@
                     <nav aria-label="Global" class="hidden md:block">
                         <ul class="flex items-center gap-4 text-sm">
                             <li>
-                                <a class="text-gray-500 text-[17px] font-heading transition hover:text-black" href="pages/dashboard.php">Dashboard</a>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/dashboard.php">Dashboard</a>
                             </li>
                             <li>
-                                <a class="text-gray-500 text-[17px] font-heading transition hover:text-black" href="pages/siswa/list.php">Data Siswa</a>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/siswa/list.php">Data Siswa</a>
                             </li>
                             <li>
-                                <a class="text-gray-500 text-[17px] font-heading transition hover:text-black" href="#">Pelanggaran</a>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="#">Pelanggaran</a>
                             </li>
                             <li>
-                                <a class="text-gray-500 text-[17px] font-heading transition hover:text-black" href="#">Surat & Laporan</a>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="#">Surat & Laporan</a>
                             </li>
                         </ul>
                     </nav>
@@ -77,4 +77,4 @@
             </div>
         </div>
     </header>
-    <main class="mx-auto max-w-7xl lg:px-8">
+    <main class="mx-auto max-w-7xl lg:px-7 pt-16">
