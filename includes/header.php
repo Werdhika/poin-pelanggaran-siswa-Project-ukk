@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./src/output.css">
 </head>
 
-<body>
+<body class="bg-gray-50">
     <header class="bg-white shadow-md">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-20 items-center justify-between">
