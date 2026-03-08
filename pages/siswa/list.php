@@ -79,12 +79,12 @@ JOIN guru on kelas.kode_guru = guru.kode_guru");
 
 <!-- Table Siswa -->
 <div class="relative max-h-screen overflow-hidden border-2 border-gray-200 rounded-md shadow-md mt-8">
-    <table class="w-full divide-y-2 divide-gray-200 bg-gray-50">
+    <table class="table-auto w-full divide-y-2 divide-gray-200 bg-gray-50">
         <thead class="font-urbanist text-black bg-gray-100">
             <tr class="text-left">
                 <th scope="col" class="py-5 pl-4">
                     <div class="flex items-center">
-                        <input id="table-checkbox" type="checkbox" value="" class="w-4 h-4 ">
+                        <input id="table-checkbox" type="checkbox" value="" class="w-4 h-4">
                         <label for="table-checkbox" class="sr-only">Table checkbox</label>
                     </div>
                 </th>
