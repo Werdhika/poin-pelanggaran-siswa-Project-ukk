@@ -16,8 +16,8 @@ include ROOTPATH . "/includes/header.php";
         </div>
     </div>
     <div class="flex gap-3">
-        <!-- button simpan -->
-        <a class="inline-flex items-center rounded-lg border border-gray-300 py-3.5 px-8 gap-1 text-sm font-poppins font-medium bg-linear-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white hover:shadow-[0_8px_20px_rgba(59,130,246,0.5)] hover:border-transparent transition duration-300" href="#">
+        <!-- button batal simpan -->
+        <a class="inline-flex items-center rounded-lg border border-gray-300 py-3.5 px-8 gap-1 text-sm font-poppins font-medium bg-linear-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white hover:shadow-[0_8px_20px_rgba(59,130,246,0.5)] hover:border-transparent transition duration-300" href="/poin_pelanggaran_siswa/pages/siswa/list.php">
             Batal Simpan
         </a>
 
