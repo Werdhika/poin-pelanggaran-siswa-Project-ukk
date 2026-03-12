@@ -2,13 +2,14 @@
 define('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/poin_pelanggaran_siswa');
 include ROOTPATH . "/config/config.php";
 include ROOTPATH . "/includes/header.php";
-$result = mysqli_query($conn, "SELECT * FROM siswa
 
-JOIN ortu_wali ON siswa.id_ortu_wali = ortu_wali.id_ortu_wali
-JOIN kelas ON siswa.id_kelas = kelas.id_kelas
-JOIN tingkat ON kelas.id_tingkat = tingkat.id_tingkat
-JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_program_keahlian
-JOIN guru on kelas.kode_guru = guru.kode_guru");
+$result = mysqli_query($conn, "SELECT * FROM siswa
+    LEFT JOIN ortu_wali ON siswa.id_ortu_wali = ortu_wali.id_ortu_wali
+    LEFT JOIN kelas ON siswa.id_kelas = kelas.id_kelas
+    LEFT JOIN tingkat ON kelas.id_tingkat = tingkat.id_tingkat
+    LEFT JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_program_keahlian
+    LEFT JOIN guru on kelas.kode_guru = guru.kode_guru
+");
 
 ?>
 
@@ -26,8 +27,7 @@ JOIN guru on kelas.kode_guru = guru.kode_guru");
         </a>
 
         <!-- button Tambah Siswa -->
-        <a class="group inline-flex items-center rounded-lg py-3.5 px-5 gap-1 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600
-               hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300" href="pages/siswa/add.php">
+        <a class="group inline-flex items-center rounded-lg py-3.5 px-5 gap-1 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300" href="pages/siswa/add.php">
             <svg class="w-4 h-4 transition-transform duration-600 group-hover:rotate-180" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12.998H13V18.998H11V12.998H5V10.998H11V4.99805H13V10.998H19V12.998Z" fill="currentColor" />
             </svg>
@@ -62,7 +62,6 @@ JOIN guru on kelas.kode_guru = guru.kode_guru");
             Pindah Sekolah
         </a>
     </div>
-    `
     <!-- Fitur Pencarian -->
     <div>
         <div class="relative group">
@@ -114,7 +113,8 @@ JOIN guru on kelas.kode_guru = guru.kode_guru");
 
         <tbody class="divide-y divide-gray-200">
             <?php
-            while ($data = mysqli_fetch_assoc($result)) { ?>
+            while ($data = mysqli_fetch_assoc($result)) {
+            ?>
                 <tr class="bg-white hover:bg-gray-100 font-medium font-poppins transition text-sm">
                     <td class="w-4 px-4">
                         <div class="flex items-center">
@@ -143,7 +143,7 @@ JOIN guru on kelas.kode_guru = guru.kode_guru");
 
                         <div role="menu" class="dropdown-menu hidden absolute end-0 top-12 z-10 w-56 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white">
                             <div>
-                                <a href="pages/siswa/edit.php" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">
+                                <a href="pages/siswa/edit.php?nis=<?php echo $data['nis']; ?>" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">
                                     Edit
                                 </a>
 

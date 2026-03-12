@@ -31,27 +31,3 @@ document.addEventListener('click', function (e) {
         e.stopPropagation();
     }
 });
-
-//% Button Jenis Kelamin & Status
-
-function handleActive(buttonClass, inputId) {
-    const buttons = document.querySelectorAll(`.${buttonClass}`);
-
-    buttons.forEach((button) => {
-        button.addEventListener('click', function () {
-            //! Hapus Active dari semua Tombol
-            buttons.forEach((btn) => {
-                btn.classList.remove('bg-current','text-white');
-            });
-
-            //? Tambah active ke tombol yang di klik
-            this.classList.add('bg-current');
-
-            //TODO Set Value ke hidden input
-            document.getElementById(inputId).value = this.dataset.value;
-        });
-    });
-}
-
-handleActive('gender-btn', 'jenis_kelamin');
-handleActive('status-btn', 'status');
