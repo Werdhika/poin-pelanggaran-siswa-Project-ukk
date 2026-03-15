@@ -2,14 +2,15 @@
 define('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/poin_pelanggaran_siswa');
 include ROOTPATH . "/config/config.php";
 
-$nama_siswa = $_POST['nama_siswa'];
 $nis = $_POST['nis'];
-$alamat = $_POST['alamat'];
+$nama_siswa = $_POST['nama_siswa'];
 $id_kelas = $_POST['id_kelas'];
+$alamat = $_POST['alamat'];
 $jenis_kelamin = $_POST['jenis_kelamin'];
-$status = $_POST['status'];
+$status_siswa = $_POST['status_siswa'];
 
-$data = "INSERT INTO siswa (nama_siswa, nis, alamat, id_kelas, jenis_kelamin, status) VALUES ('$nama_siswa', '$nis', '$alamat', '$id_kelas', '$jenis_kelamin', '$status')";
+$data = "INSERT INTO siswa (nama_siswa, nis, alamat, id_kelas, jenis_kelamin, status_siswa) 
+VALUES ('$nama_siswa', '$nis', '$alamat', '$id_kelas', '$jenis_kelamin', '$status_siswa')";
 
 // echo "<pre>";
 // var_dump($_POST);
