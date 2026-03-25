@@ -29,6 +29,9 @@
                                 <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/guru/list.php">Data Guru</a>
                             </li>
                             <li>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/jenis_pelanggaran/list.php">Jenis Pelanggaran</a>
+                            </li>
+                            <li>
                                 <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/siswa/list.php">Data Siswa</a>
                             </li>
                             <li>

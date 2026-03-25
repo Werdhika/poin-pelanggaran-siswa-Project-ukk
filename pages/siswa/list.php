@@ -144,7 +144,7 @@ $result = mysqli_query($conn, "SELECT * FROM siswa
 
                         <div role="menu" class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white">
                             <div>
-                                <a href="pages/siswa/edit.php?nis=<?php echo $row['nis']; ?>" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">
+                                <a href="pages/siswa/edit.php?nis=<?= $row['nis']; ?>" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">
                                     Edit
                                 </a>
 

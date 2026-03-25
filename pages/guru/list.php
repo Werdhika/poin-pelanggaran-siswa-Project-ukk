@@ -3,9 +3,7 @@ define('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/poin_pelanggaran_siswa');
 include ROOTPATH . "/config/config.php";
 include ROOTPATH . "/includes/header.php";
 
-$result = mysqli_query($conn, "SELECT * FROM guru
-");
-
+$result = mysqli_query($conn, "SELECT * FROM guru");
 ?>
 
 <div class="flex justify-between">
@@ -115,7 +113,7 @@ $result = mysqli_query($conn, "SELECT * FROM guru
                     <td class="px-6 py-2"><?= $row['role']; ?></td>
                     <td class="px-6 py-2 "><?= $row['jabatan']; ?></td>
                     <td class="px-6 py-2"><?= $row['telp']; ?>
-                    <td class="px-6 py-2"><?= $row['status'] == '1' ? 'Aktif' : 'Tidak Aktif'; ?>
+                    <td class="px-6 py-2"><?= $row['status_guru'] == '1' ? 'Aktif' : 'Tidak Aktif'; ?>
                     </td>
 
                     <!-- Dropdowns -->
@@ -131,7 +129,7 @@ $result = mysqli_query($conn, "SELECT * FROM guru
 
                         <div role="menu" class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white">
                             <div>
-                                <a href="" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">
+                                <a href="pages/guru/edit.php?kode_guru=<?= $row['kode_guru']; ?>" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">
                                     Edit
                                 </a>
 
@@ -139,7 +137,7 @@ $result = mysqli_query($conn, "SELECT * FROM guru
                                     Detail
                                 </a>
                             </div>
-                            <a href=""
+                            <a href="/poin_pelanggaran_siswa/process/guru/delete.php?kode_guru=<?= $row['kode_guru']; ?>"
                             onclick="return confirm('Yakin ingin menghapus data ini?')" 
                             class="block w-full px-3 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">
                                 Hapus
@@ -186,7 +184,6 @@ $result = mysqli_query($conn, "SELECT * FROM guru
         </li>
     </ul>
 </nav>
-
 
 <?php
 include ROOTPATH . "/includes/footer.php";

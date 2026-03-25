@@ -2,18 +2,33 @@
 define('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/poin_pelanggaran_siswa');
 include ROOTPATH . "/config/config.php";
 include ROOTPATH . "/includes/header.php";
-
 $result = mysqli_query($conn, "SELECT DISTINCT jabatan FROM guru");
+$query = mysqli_query($conn, "SELECT MAX(kode_guru) as kode FROM guru");
 
-$kodeGuru = mysqli_query($conn, "SELECT MAX(kode_guru) as kode FROM guru");
-$data = mysqli_fetch_assoc($kodeGuru);
+$prefix = "00";
+$data = mysqli_fetch_assoc($query);
 
-$kode_guruBaru = $data['kode'] ? $data['kode'] + 1 : 1;
+if ($data['kode']) {
+    $kode = $data['kode'];
+    list($depan, $belakang) = explode('.', $kode);
+    $urutan = (int)$belakang + 1;
+
+    if ($urutan > 999) {
+        $depan = str_pad((int)$depan + 1, 4, "0", STR_PAD_LEFT);
+        $urutan = 1;
+    }
+
+} else {
+    $depan = "0001";
+    $urutan = 1;
+}
+
+$kodeGuru = $depan . '.' . str_pad($urutan, 3, "0", STR_PAD_LEFT);
 ?>
 
 <div class="flex justify-between items-center">
     <div>
-        <h2 class="mt-4 font-urbanist font-extrabold text-5xl mb-8 ">Data Guru</h2>
+        <h2 class=" font-urbanist font-extrabold text-5xl mb-4 ">Data Guru</h2>
         <div class="flex font-urbanist font-semibold">
             <a href="/poin_pelanggaran_siswa/pages/guru/list.php">Data Guru</a>
             <svg class="rotate-180" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,20 +39,20 @@ $kode_guruBaru = $data['kode'] ? $data['kode'] + 1 : 1;
     </div>
     <div class="flex gap-3">
         <!-- button batal simpan -->
-        <a class="inline-flex items-center rounded-lg border border-gray-300 py-3.5 px-8 gap-1 text-sm font-poppins font-medium bg-linear-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white hover:shadow-[0_8px_20px_rgba(59,130,246,0.5)] hover:border-transparent transition duration-300" href="/poin_pelanggaran_siswa/pages/guru/list.php">
-            Batal Simpan
+        <a class="inline-flex items-center rounded-lg border border-gray-300 py-4 px-8 gap-1 text-sm font-poppins font-medium bg-linear-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white hover:shadow-[0_8px_20px_rgba(59,130,246,0.5)] hover:border-transparent transition duration-300" href="/poin_pelanggaran_siswa/pages/guru/list.php">
+            Batal
         </a>
 
         <!-- button Simpan -->
         <button type="submit" form="formGuru"
-            class="group inline-flex items-center rounded-lg py-3.5 px-14 gap-1 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300 cursor-pointer">
+            class="group inline-flex items-center rounded-lg py-4 px-8 gap-1 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300 cursor-pointer">
             Simpan
         </button>
     </div>
 </div>
 
 <!-- Form Data Siswa -->
-<form id="formGuru" action="/poin_pelanggaran_siswa/process/guru/guru_insert.php" method="POST">
+<form id="formGuru" action="/poin_pelanggaran_siswa/process/guru/insert.php" method="POST">
     <div class="w-full mt-16 flex gap-8">
         <div class="flex-2">
             <div class="bg-white rounded-md shadow-md overflow-hidden">
@@ -58,17 +73,18 @@ $kode_guruBaru = $data['kode'] ? $data['kode'] + 1 : 1;
                     <div class="flex gap-4 w-full">
 
                         <!-- Input NIS -->
-                        <div class="flex-1">
+                        <div class="flex-2">
                             <label class="block mb-2 font-medium">Kode Guru</label>
                             <input
                                 type="text"
                                 name="kode_guru"
-                                value="<?= $kode_guruBaru = "00"; ?>"
-                                class="w-full border border-gray-300 p-2.5 rounded-md box-border" readonly>
+                                value="<?= $kodeGuru; ?>"
+                                class="w-full border border-gray-300 p-2.5 rounded-md box-border"
+                                readonly>
                         </div>
 
                         <!-- Pilih Kelas -->
-                        <div class="flex-2">
+                        <div class="flex-3">
                             <label class="block mb-2 font-medium">Jabatan</label>
                             <div class="relative">
                                 <select
@@ -94,7 +110,7 @@ $kode_guruBaru = $data['kode'] ? $data['kode'] + 1 : 1;
                         </div>
 
                         <!-- Input Nama Guru -->
-                        <div class="flex-6">
+                        <div class="flex-5">
                             <label class="block mb-2 font-medium">Nama Guru</label>
                             <input
                                 type="text"
@@ -169,7 +185,7 @@ $kode_guruBaru = $data['kode'] ? $data['kode'] + 1 : 1;
                             <div class="w-full">
                                 <label for="status_aktif" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-2.5 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
                                     <p class="text-gray-700">Aktif</p>
-                                    <input type="radio" name="status" value="1" id="status_aktif" class="sr-only"
+                                    <input type="radio" name="status_guru" value="1" id="status_aktif" class="sr-only"
                                         required
                                         oninvalid="this.setCustomValidity('Pilih Status terlebih dahulu')"
                                         oninput="this.setCustomValidity('')">
@@ -178,7 +194,7 @@ $kode_guruBaru = $data['kode'] ? $data['kode'] + 1 : 1;
                             <div class="w-full">
                                 <label for="status_tidak_aktif" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-2.5 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-red-600 has-checked:ring-1 has-checked:ring-red-600 has-checked:bg-red-100">
                                     <p class="text-gray-700">Tidak Aktif</p>
-                                    <input type="radio" name="status" value="0" id="status_tidak_aktif" class="sr-only">
+                                    <input type="radio" name="status_guru" value="0" id="status_tidak_aktif" class="sr-only">
                                 </label>
                             </div>
                         </div>

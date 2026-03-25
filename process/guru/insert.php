@@ -5,12 +5,12 @@ include ROOTPATH . "/config/config.php";
 $kode_guru = $_POST['kode_guru'];
 $nama = $_POST['nama'];
 $role = $_POST['role'];
-$status = $_POST['status'];
+$status_guru = $_POST['status_guru'];
 $jabatan = $_POST['jabatan'];
 $telp = $_POST['telp'];
 
-$data = "INSERT INTO guru (kode_guru, nama, role, status, jabatan, telp) 
-VALUES ('$kode_guru', '$nama', '$role', '$status', '$jabatan', '$telp')";
+$data = "INSERT INTO guru (kode_guru, nama, role, status_guru, jabatan, telp) 
+VALUES ('$kode_guru', '$nama', '$role', '$status_guru', '$jabatan', '$telp')";
 
 $query = mysqli_query($conn, $data);
 

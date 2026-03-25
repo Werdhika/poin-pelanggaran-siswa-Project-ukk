@@ -3,7 +3,8 @@ define('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/poin_pelanggaran_siswa');
 include ROOTPATH . "/config/config.php";
 include ROOTPATH . "/includes/header.php";
 
-$result = mysqli_query($conn, "SELECT kelas.*, tingkat.tingkat, program_keahlian.program_keahlian
+$result = mysqli_query($conn, "SELECT 
+kelas.*, tingkat.tingkat, program_keahlian.program_keahlian
 FROM kelas
 JOIN tingkat ON kelas.id_tingkat = tingkat.id_tingkat
 JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_program_keahlian
@@ -67,7 +68,7 @@ if ($nisAkhir == null) {
                     <div class="flex gap-4 w-full">
 
                         <!-- Input NIS -->
-                        <div class="flex-1">
+                        <div class="flex-2">
                             <label class="block mb-2 font-medium">NIS</label>
                             <input
                                 type="text"
@@ -77,7 +78,7 @@ if ($nisAkhir == null) {
                         </div>
 
                         <!-- Pilih Kelas -->
-                        <div class="flex-2">
+                        <div class="flex-3">
                             <label class="block mb-2 font-medium">Kelas</label>
                             <div class="relative">
                                 <select
@@ -153,23 +154,17 @@ if ($nisAkhir == null) {
 
                         <div class="flex gap-4">
                             <div class="w-full">
-                                <label for="laki-laki" class="flex items-center gap-4 rounded-lg border border-gray-300 bg-white p-2.5 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14a5 5 0 1 0 10 0a5 5 0 1 0-10 0m14-9l-5.4 5.4M19 5h-5m5 0v5" />
-                                    </svg>
-                                    <p class="text-gray-700">Laki-Laki</p>
+                                <label for="laki-laki" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-2.5 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
+                                    <p class="text-gray-700">Laki-laki</p>
                                     <input type="radio" name="jenis_kelamin" value="Laki - Laki" id="laki-laki" class="sr-only"
                                         required
                                         oninvalid="this.setCustomValidity('Pilih jenis kelamin terlebih dahulu')"
                                         oninput="this.setCustomValidity('')">
                                 </label>
-                            </div>
+                            </div>  
 
                             <div class="w-full">
-                                <label for="perempuan" class="flex items-center gap-4 rounded-lg border border-gray-300 bg-white p-2.5 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-pink-600 has-checked:ring-1 has-checked:ring-pink-600 has-checked:bg-pink-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                        <path fill="currentColor" d="M19.75 7.75a7.75 7.75 0 1 0-9.2 7.6a.27.27 0 0 1 .2.25v2.65a.25.25 0 0 1-.25.25H9A1.25 1.25 0 0 0 9 21h1.5a.25.25 0 0 1 .25.25v1.5a1.25 1.25 0 0 0 2.5 0v-1.5a.25.25 0 0 1 .25-.25H15a1.25 1.25 0 0 0 0-2.5h-1.5a.25.25 0 0 1-.25-.25V15.6a.27.27 0 0 1 .2-.25a7.75 7.75 0 0 0 6.3-7.6m-13 0A5.25 5.25 0 1 1 12 13a5.26 5.26 0 0 1-5.25-5.25" />
-                                    </svg>
+                                <label for="perempuan" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-2.5 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-pink-600 has-checked:ring-1 has-checked:ring-pink-600 has-checked:bg-pink-100">
                                     <p class="text-gray-700">Perempuan</p>
                                     <input type="radio" name="jenis_kelamin" value="Perempuan" id="perempuan" class="sr-only">
                                 </label>

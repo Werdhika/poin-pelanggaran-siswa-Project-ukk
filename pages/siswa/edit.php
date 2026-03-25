@@ -35,8 +35,8 @@ LEFT JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_pr
 
         <!-- button Simpan -->
         <button type="submit" form="formSiswa"
-            class="group inline-flex items-center rounded-lg py-3.5 px-14 gap-1 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300 cursor-pointer">
-            Simpan
+            class="group inline-flex items-center rounded-lg py-3.5 px-8 gap-1 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300 cursor-pointer">
+            Simpan Perubahan
         </button>
     </div>
 </div>
@@ -90,7 +90,7 @@ LEFT JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_pr
                                     <!-- Query Kelas -->
                                     <?php while ($kelas = mysqli_fetch_assoc($query_kelas)) { ?>
                                         <option value="<?= $kelas['id_kelas'] ?>"
-                                            <?= ($kelas['id_kelas'] == $data['id_kelas']) ? 'selected' : '' ?>>
+                                            <?= ($kelas['id_kelas'] == $data['id_kelas']) ? 'selected' : ''; ?>>
                                             <?= "$kelas[tingkat] $kelas[program_keahlian] $kelas[rombel]" ?>
                                         </option>
                                     <?php } ?>
@@ -108,8 +108,9 @@ LEFT JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_pr
                                 type="text"
                                 name="nis"
                                 value="<?= $data['nis']; ?>"
-                                readonly
-                                class="w-full border border-gray-300 p-2 rounded-md box-border">
+                                class="w-full border border-gray-300 p-2 rounded-md box-border"
+                                readonly>
+                                
                         </div>
                     </div>
 
@@ -195,9 +196,9 @@ LEFT JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_pr
                                     <p class="text-gray-700 font-semibold">Aktif</p>
                                     <input
                                         type="radio"
-                                        name="status"
+                                        name="status_siswa"
                                         value="aktif"
-                                        <?= $data['status'] == 'aktif' ? 'checked' : ''; ?>
+                                        <?= $data['status_siswa'] == 'aktif' ? 'checked' : ''; ?>
                                         id="status_aktif"
                                         class="sr-only"
                                         required
@@ -210,9 +211,9 @@ LEFT JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_pr
                                     <p class="text-gray-700 font-semibold">Tidak Aktif</p>
                                     <input
                                         type="radio"
-                                        name="status"
+                                        name="status_siswa"
                                         value="tidak_aktif"
-                                        <?= $data['status'] == 'tidak_aktif' ? 'checked' : ''; ?>
+                                        <?= $data['status_siswa'] == 'tidak_aktif' ? 'checked' : ''; ?>
                                         id="status_tidak_aktif"
                                         class="sr-only">
                                 </label>
@@ -222,9 +223,9 @@ LEFT JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_pr
                                     <p class="text-gray-700 font-semibold">Pindah</p>
                                     <input
                                         type="radio"
-                                        name="status"
+                                        name="status_siswa"
                                         value="pindah"
-                                        <?= $data['status'] == 'pindah' ? 'checked' : ''; ?>
+                                        <?= $data['status_siswa'] == 'pindah' ? 'checked' : ''; ?>
                                         id="status_pindah"
                                         class="sr-only">
                                 </label>
@@ -234,9 +235,9 @@ LEFT JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_pr
                                     <p class="text-gray-700 font-semibold">Lulus</p>
                                     <input
                                         type="radio"
-                                        name="status"
+                                        name="status_siswa"
                                         value="lulus"
-                                        <?= $data['status'] == 'lulus' ? 'checked' : ''; ?>
+                                        <?= $data['status_siswa'] == 'lulus' ? 'checked' : ''; ?>
                                         id="status_lulus"
                                         class="sr-only">
                                 </label>
