@@ -12,10 +12,6 @@ $status_siswa = $_POST['status_siswa'];
 $data = "INSERT INTO siswa (nama_siswa, nis, alamat, id_kelas, jenis_kelamin, status_siswa) 
 VALUES ('$nama_siswa', '$nis', '$alamat', '$id_kelas', '$jenis_kelamin', '$status_siswa')";
 
-// echo "<pre>";
-// var_dump($_POST);
-// die();
-
 $query = mysqli_query($conn, $data);
 
 if ($query) {

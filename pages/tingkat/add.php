@@ -7,25 +7,25 @@ include ROOTPATH . "/includes/header.php";
 
 <div class="flex justify-between items-center px-28">
     <div>
-        <h2 class="font-urbanist font-extrabold text-3xl mb-2">Tambah Jenis Pelanggaran</h2>
-        <p>Silakan isi data pelanggaran yang ingin ditambahkan.</p>
+        <h2 class="font-urbanist font-extrabold text-3xl mb-2">Tambah Tingkat Kelas</h2>
+        <p>Silakan isi data tingkat kelas yang akan ditambahkan.</p>
     </div>
 
     <div class="flex gap-3">
         <!-- button batal simpan -->
-        <a class="inline-flex items-center rounded-lg border border-gray-300 py-4 px-10 gap-1 text-sm font-poppins font-medium bg-linear-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white hover:shadow-[0_8px_20px_rgba(59,130,246,0.5)] hover:border-transparent transition duration-300" href="/poin_pelanggaran_siswa/pages/jenis_pelanggaran/list.php">
+        <a href="/poin_pelanggaran_siswa/pages/tingkat/list.php" class="inline-flex items-center rounded-lg border border-gray-300 py-4 px-10 gap-1 text-sm font-poppins font-medium bg-linear-to-r hover:from-blue-600 hover:to-indigo-600 hover:text-white hover:shadow-[0_8px_20px_rgba(59,130,246,0.5)] hover:border-transparent transition duration-300">
             Batal
         </a>
 
         <!-- button Simpan -->
-        <button type="submit" form="formPelanggaran"
+        <button type="submit" form="formTingkat"
             class="inline-flex items-center rounded-lg py-4 px-10 gap-1 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300 cursor-pointer">
             Simpan
         </button>
     </div>
 </div>
 
-<form id="formPelanggaran" action="/poin_pelanggaran_siswa/process/jenis_pelanggaran/insert.php" method="POST">
+<form id="formTingkat" action="/poin_pelanggaran_siswa/process/tingkat/insert.php" method="POST">
     <div class="w-full mt-16 flex gap-8 px-28">
         <div class="flex-2">
             <div class="bg-white rounded-md shadow-md overflow-hidden">
@@ -36,36 +36,19 @@ include ROOTPATH . "/includes/header.php";
                             <path d="M11.6663 10.2084C11.6663 11.658 11.6663 12.8334 6.99967 12.8334C2.33301 12.8334 2.33301 11.658 2.33301 10.2084C2.33301 8.75879 4.42251 7.58337 6.99967 7.58337C9.57684 7.58337 11.6663 8.75879 11.6663 10.2084Z" stroke="#0088FF" stroke-width="1.5" />
                         </svg>
                     </div>
-                    <span>JENIS PELANGGARAN</span>
+                    <span>TINGKAT KELAS</span>
                 </div>
 
                 <div class="p-10 font-poppins font-medium text-sm rounded-b-lg border-2 border-t-0 border-gray-200">
-                    <div class="flex gap-4 w-full">
-
-                        <div class="flex-5">
-                            <label class="block mb-2 font-semibold">Nama Pelanggaran</label>
-                            <input
-                                type="text"
-                                name="jenis"
-                                class="w-full border border-gray-300 p-2.5 rounded-md box-border"
-                                required
-                                oninvalid="this.setCustomValidity('Nama guru wajib diisi')"
-                                oninput="this.setCustomValidity('')">
-                        </div>
-
-                        <div class="flex-2">
-                            <label class="block mb-2 font-semibold">Poin Pelanggaran</label>
-                            <div class="flex">
-                                <input
-                                    type="number"
-                                    name="poin"
-                                    class="w-full border border-gray-300 p-2.5 rounded-l-md box-border">
-
-                                <span class="bg-gray-100 border border-l-0 border-gray-300 px-4 flex items-center rounded-r-lg text-gray-600">
-                                    poin
-                                </span>
-                            </div>
-                        </div>
+                    <div class="w-full">
+                        <label class="block mb-2 font-semibold">Tingkat</label>
+                        <input
+                            type="text"
+                            name="tingkat"
+                            class="w-full border border-gray-300 p-2.5 rounded-md box-border"
+                            required
+                            oninvalid="this.setCustomValidity('Nama guru wajib diisi')"
+                            oninput="this.setCustomValidity('')">
                     </div>
                 </div>
             </div>

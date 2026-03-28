@@ -32,6 +32,15 @@
                                 <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/jenis_pelanggaran/list.php">Jenis Pelanggaran</a>
                             </li>
                             <li>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/tingkat/list.php">Tingkat</a>
+                            </li>
+                            <li>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/program_keahlian/list.php">Program Keahlian</a>
+                            </li>
+                            <li>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/kelas/list.php">Kelas</a>
+                            </li>
+                            <li>
                                 <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/siswa/list.php">Data Siswa</a>
                             </li>
                             <li>

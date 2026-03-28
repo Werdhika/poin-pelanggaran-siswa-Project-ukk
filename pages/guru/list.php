@@ -138,8 +138,8 @@ $result = mysqli_query($conn, "SELECT * FROM guru");
                                 </a>
                             </div>
                             <a href="/poin_pelanggaran_siswa/process/guru/delete.php?kode_guru=<?= $row['kode_guru']; ?>"
-                            onclick="return confirm('Yakin ingin menghapus data ini?')" 
-                            class="block w-full px-3 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">
+                                onclick="return confirm('Yakin ingin menghapus data ini?')"
+                                class="block w-full px-3 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">
                                 Hapus
                             </a>
                         </div>
