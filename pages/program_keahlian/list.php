@@ -7,16 +7,16 @@ $result = mysqli_query($conn, "SELECT * FROM program_keahlian");
 ?>
 
 <!-- Title -->
-<div class="flex justify-between items-ceanter">
+<div class="flex justify-between">
     <div>
         <h2 class="text-3xl font-urbanist font-bold mb-2">Data Program Keahlian</h2>
         <p>Kelola data program keahlian yang ada di sekolah.</p>
     </div>
 
     <!-- Button -->
-    <div class="flex py-2 justify-center gap-3">
-        <a href="pages/program_keahlian/add.php" class="group inline-flex items-center rounded-lg py-4 px-6 gap-1 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300">
-            <svg class="w-4 h-4 transition-transform duration-600 group-hover:rotate-180" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div>
+        <a href="pages/program_keahlian/add.php" class="group inline-flex items-center rounded-lg py-4 px-6 gap-1.5 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300">
+            <svg class="w-5 h-5 transition-transform duration-600 group-hover:rotate-180" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12.998H13V18.998H11V12.998H5V10.998H11V4.99805H13V10.998H19V12.998Z" fill="currentColor" />
             </svg>
             Tambah Data

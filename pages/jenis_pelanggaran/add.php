@@ -61,7 +61,7 @@ include ROOTPATH . "/includes/header.php";
                                     name="poin"
                                     class="w-full border border-gray-300 p-2.5 rounded-l-md box-border">
 
-                                <span class="bg-gray-100 border border-l-0 border-gray-300 px-4 flex items-center rounded-r-lg text-gray-600">
+                                <span class="bg-gray-100 border border-l-0 border-gray-300 px-4 flex items-center rounded-r-md text-gray-600">
                                     poin
                                 </span>
                             </div>

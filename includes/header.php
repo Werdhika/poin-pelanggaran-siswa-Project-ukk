@@ -35,6 +35,9 @@
                                 <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/tingkat/list.php">Tingkat</a>
                             </li>
                             <li>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/orang_tua/list.php">Data Orang Tua</a>
+                            </li>
+                            <li>
                                 <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/program_keahlian/list.php">Program Keahlian</a>
                             </li>
                             <li>
@@ -48,6 +51,9 @@
                             </li>
                             <li>
                                 <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="#">Surat & Laporan</a>
+                            </li>
+                            <li>
+                                <a class="text-gray-500 text-sm font-poppins transition hover:text-black" href="pages/tahun_ajaran/list.php">Tahun Ajaran</a>
                             </li>
                         </ul>
                     </nav>

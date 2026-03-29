@@ -44,9 +44,8 @@ $resultGuru = mysqli_query($conn, "SELECT kode_guru, nama FROM guru");
 
                 <div class="p-10 font-poppins font-medium text-sm rounded-b-lg border-2 border-t-0 border-gray-200">
                     <div class="flex gap-4 w-full">
-
                         <div class="flex-4">
-                            <label class="block mb-2 font-medium">Nama Wali Kelas</label>
+                            <label class="block mb-2 font-semibold">Nama Wali Kelas</label>
                             <div class="relative">
                                 <select
                                     name="kode_guru"
@@ -70,7 +69,7 @@ $resultGuru = mysqli_query($conn, "SELECT kode_guru, nama FROM guru");
                         </div>
 
                         <div class="flex-2">
-                            <label class="block mb-2 font-medium">Tingkat</label>
+                            <label class="block mb-2 font-semibold">Tingkat</label>
                             <div class="relative">
                                 <select name="id_tingkat" class="w-full border border-gray-300 p-2.5 rounded-md appearance-none" required>
                                     <option value="" disabled selected hidden>Pilih Tingkat</option>
@@ -88,7 +87,7 @@ $resultGuru = mysqli_query($conn, "SELECT kode_guru, nama FROM guru");
                         </div>
 
                         <div class="flex-2">
-                            <label class="block mb-2 font-medium">Program Keahlian</label>
+                            <label class="block mb-2 font-semibold">Program Keahlian</label>
                             <div class="relative">
                                 <select name="id_program_keahlian" class="w-full border border-gray-300 p-2.5 rounded-md appearance-none" required>
                                     <option value="" disabled selected hidden>Pilih Program</option>
@@ -106,7 +105,7 @@ $resultGuru = mysqli_query($conn, "SELECT kode_guru, nama FROM guru");
                         </div>
 
                         <div class="flex-2">
-                            <label class="block mb-2 font-medium">Rombel</label>
+                            <label class="block mb-2 font-semibold">Rombel</label>
                             <input
                                 type="number"
                                 name="rombel"

@@ -21,7 +21,7 @@ FROM kelas
 <div class="flex justify-between items-center">
     <div>
         <h2 class="text-3xl font-urbanist font-bold mb-2">Data Kelas</h2>
-        <p>Kelola daftar kelas yang tersedia di sekolah.</p>
+        <p>Kelola data kelas yang tersimpan pada sistem sekolah.</p>
     </div>
 
     <!-- Button -->
@@ -67,7 +67,7 @@ FROM kelas
                             <?= $row['kode_guru']; ?>
                         </span>
                     </td>
-                    
+
                     <td class="px-4 py-4 text-center">
                         <div class="inline-block bg-gray-100 px-4.5 py-2 rounded-3xl border-2 border-gray-400 text-[12px] font-semibold">
                             <?= "$row[tingkat] $row[program_keahlian] $row[rombel]"; ?>

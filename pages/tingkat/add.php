@@ -39,7 +39,7 @@ include ROOTPATH . "/includes/header.php";
                     <span>TINGKAT KELAS</span>
                 </div>
 
-                <div class="p-10 font-poppins font-medium text-sm rounded-b-lg border-2 border-t-0 border-gray-200">
+                <div class="p-8 font-poppins font-medium text-sm rounded-b-lg border-2 border-t-0 border-gray-200">
                     <div class="w-full">
                         <label class="block mb-2 font-semibold">Tingkat</label>
                         <input

@@ -10,8 +10,8 @@ if (isset($_GET['nis'])) {
         header("location: /poin_pelanggaran_siswa/pages/siswa/list.php");
         exit;
     } else {
-        echo "Gagal Tambah";
+        echo "Gagal Hapus Data Siswa";
     }
 } else {
-    echo "Nis Tidak ditemukan";
+    echo "Nis Siswa Tidak ditemukan";
 }

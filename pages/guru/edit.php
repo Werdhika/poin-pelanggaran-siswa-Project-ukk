@@ -4,11 +4,8 @@ include ROOTPATH . "/config/config.php";
 include ROOTPATH . "/includes/header.php";
 
 $kode_guru = $_GET['kode_guru'];
-$result = mysqli_query($conn, "SELECT * FROM guru
-WHERE kode_guru = '$kode_guru'
-");
+$result = mysqli_query($conn, "SELECT * FROM guru WHERE kode_guru = '$kode_guru'");
 $data = mysqli_fetch_assoc($result);
-
 $query_jabatan = mysqli_query($conn, "SELECT DISTINCT jabatan FROM guru")
 ?>
 
@@ -190,8 +187,7 @@ $query_jabatan = mysqli_query($conn, "SELECT DISTINCT jabatan FROM guru")
                                     <input
                                         type="radio"
                                         name="status_guru"
-                                        value="1"
-                                        <?= $data['status_guru'] == '1' ? 'checked' : ''; ?>
+                                        value="1"<?= $data['status_guru'] == '1' ? 'checked' : ''; ?>
                                         id="status_aktif"
                                         class="sr-only"
                                         required
@@ -205,8 +201,7 @@ $query_jabatan = mysqli_query($conn, "SELECT DISTINCT jabatan FROM guru")
                                     <input
                                         type="radio"
                                         name="status_guru"
-                                        value="0"
-                                        <?= $data['status_guru'] == '0' ? 'checked' : ''; ?>
+                                        value="0"<?= $data['status_guru'] == '0' ? 'checked' : ''; ?>
                                         id="status_tidak_aktif"
                                         class="sr-only">
                                 </label>

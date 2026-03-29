@@ -12,5 +12,5 @@ WHERE id_tingkat='$id'");
 if ($query) {
     header("location:/poin_pelanggaran_siswa/pages/tingkat/list.php");
 } else {
-    echo "Gagal update data";
+    echo "Gagal memperbarui data tingkat kelas";
 }

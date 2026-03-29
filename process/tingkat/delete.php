@@ -10,8 +10,8 @@ if (isset($_GET['id_tingkat'])) {
         header("location: /poin_pelanggaran_siswa/pages/tingkat/list.php");
         exit;
     } else {
-        echo "Gagal Tambah";
+        echo "Gagal Hapus Data Tingkat";
     }
 } else {
-    echo "Id Tingkat  Tidak ditemukan";
+    echo "Id Tingkat Tidak ditemukan";
 }

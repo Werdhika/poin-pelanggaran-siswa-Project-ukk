@@ -4,12 +4,8 @@ include ROOTPATH . "/config/config.php";
 include ROOTPATH . "/includes/header.php";
 
 $id = $_GET['id_program_keahlian'];
-$result = mysqli_query($conn, "SELECT * FROM program_keahlian
-WHERE id_program_keahlian = '$id'
-");
-
+$result = mysqli_query($conn, "SELECT * FROM program_keahlian WHERE id_program_keahlian = '$id'");
 $data = mysqli_fetch_assoc($result);
-
 ?>
 
 <div class="flex justify-between items-center px-28">

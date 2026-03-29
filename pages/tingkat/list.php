@@ -10,7 +10,7 @@ $result = mysqli_query($conn, "SELECT * FROM tingkat");
 <div class="flex justify-between items-ceanter">
     <div>
         <h2 class="text-3xl font-urbanist font-bold mb-2">Data Tingkat Kelas</h2>
-        <p>Kelola data tingkat kelas yang digunakan dalam sistem sekolah.</p>
+        <p>Kelola data tingkat kelas siswa yang tersimpan pada sistem sekolah.</p>
     </div>
 
     <!-- Button -->
@@ -48,7 +48,7 @@ $result = mysqli_query($conn, "SELECT * FROM tingkat");
                 <tr class="bg-white hover:bg-gray-100 font-medium font-poppins transition text-sm">
                     <td class="px-2 py-4 font-bold text-[16px] text-center"><?= $no++; ?></td>
                     <td class="px-32 py-4">
-                        <div class="inline-block bg-gray-100 px-4.5 py-2 rounded-3xl border-2 border-gray-400 text-[12px] font-semibold">
+                        <div class="inline-block bg-gray-100 px-4 py-2 rounded-3xl border-2 border-gray-400 text-[12px] font-semibold">
                             <?= $row['tingkat']; ?>
                         </div>
                     </td>
