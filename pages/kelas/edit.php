@@ -82,7 +82,8 @@ $resultGuru = mysqli_query($conn, "SELECT kode_guru, nama FROM guru");
                                 <select name="id_tingkat" class="w-full border border-gray-300 p-2.5 rounded-md appearance-none" required>
                                     <option value="" disabled selected hidden>Pilih Tingkat</option>
 
-                                    <?php while ($tingkat = mysqli_fetch_assoc($resultTingkat)) {
+                                    <?php
+                                    while ($tingkat = mysqli_fetch_assoc($resultTingkat)) {
                                         $selected = ($tingkat['id_tingkat'] == $data['id_tingkat']) ? 'selected' : '';
                                     ?>
                                         <option value="<?= $tingkat['id_tingkat'] ?>" <?= $selected ?>>

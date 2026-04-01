@@ -13,5 +13,5 @@ if (isset($_GET['id_tahun_ajaran'])) {
         echo "Gagal Hapus Data Tahun Ajaran";
     }
 } else {
-    echo "Id tahun ajaran Tidak ditemukan";
+    echo "Id tahun ajaran tidak ditemukan";
 }

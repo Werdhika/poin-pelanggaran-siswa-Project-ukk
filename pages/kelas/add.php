@@ -119,3 +119,7 @@ $resultGuru = mysqli_query($conn, "SELECT kode_guru, nama FROM guru");
         </div>
     </div>
 </form>
+
+<?php
+include ROOTPATH . "/includes/footer.php";
+?>

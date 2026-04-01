@@ -66,3 +66,7 @@ include ROOTPATH . "/includes/header.php";
         </div>
     </div>
 </form>
+
+<?php
+include ROOTPATH . "/includes/footer.php";
+?>

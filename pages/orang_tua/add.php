@@ -150,7 +150,7 @@ include ROOTPATH . "/includes/header.php";
                         type="text"
                         name="no_telp_ayah"
                         placeholder="8123456789"
-                        class="w-full border border-gray-300 p-3 rounded-r-md box-border focus:outline-none focus:border-black ">
+                        class="w-full border border-gray-300 p-3 rounded-r-md box-border focus:outline-none focus:border-black">
                 </div>
             </div>
 
@@ -159,7 +159,7 @@ include ROOTPATH . "/includes/header.php";
                 <label class="block mb-2 font-semibold">Alamat wali</label>
                 <textarea
                     name="alamat_wali"
-                    class="w-full border border-gray-300 p-3.5 rounded-md box-border focus:outline-none focus:border-black "
+                    class="w-full border border-gray-300 p-3.5 rounded-md box-border focus:outline-none focus:border-black"
                     rows="2"></textarea>
             </div>
         </div>

@@ -50,7 +50,7 @@ include ROOTPATH . "/includes/header.php";
                                 name="tahun"
                                 class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black"
                                 required
-                                oninvalid="this.setCustomValidity('Isi data tahun ajaran')"
+                                oninvalid="this.setCustomValidity('Silahkan isi data tahun ajaran')"
                                 oninput="this.setCustomValidity('')">
                         </div>
                     </div>

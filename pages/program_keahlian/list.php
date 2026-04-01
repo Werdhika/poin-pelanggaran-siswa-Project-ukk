@@ -26,7 +26,7 @@ $result = mysqli_query($conn, "SELECT * FROM program_keahlian");
 
 <div class="relative overflow-visible border border-gray-200 rounded-lg shadow-sm mt-14 mb-48">
     <table class="w-full text-sm text-left">
-        <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-10 shadow-md">
+        <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-1 shadow-md">
             <tr>
                 <th scope="col" class="px-2 py-5 font-bold text-gray-700 text-center">
                     NO
@@ -68,7 +68,8 @@ $result = mysqli_query($conn, "SELECT * FROM program_keahlian");
                             </button>
                         </span>
 
-                        <div role="menu" class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white">
+                        <div role="menu"
+                            class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white transition-all duration-200 origin-top-right scale-95 opacity-0">
                             <div>
                                 <a href="pages/program_keahlian/edit.php?id_program_keahlian=<?= $row['id_program_keahlian']; ?>" class="block px-3 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-blue-600" role="menuitem">
                                     Edit

@@ -24,7 +24,7 @@ $result = mysqli_query($conn, "SELECT * FROM ortu_wali");
 </div>
 
 <!-- Fitur Tabel -->
-<div class="flex items-center z-10 mt-16 justify-between rounded-md ">
+<div class="flex items-center z-1 mt-16 justify-between rounded-md ">
     <!-- Tab Status -->
     <div class="inline-flex font-poppins text-sm font-medium">
         <a href="#" class="px-5 py-3 rounded-lg bg-linear-to-r from-blue-600 to-indigo-600 shadow-[0_3px_10px_rgba(59,130,246,0.5)] font-semibold text-white">Semua</a>
@@ -51,7 +51,7 @@ $result = mysqli_query($conn, "SELECT * FROM ortu_wali");
 <!-- Table Siswa -->
 <div class="relative overflow-visible border border-gray-200 rounded-lg shadow-sm mt-8">
     <table class="w-full text-sm text-left">
-        <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-10 shadow-md">
+        <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-1 shadow-md">
             <tr>
                 <th scope="col" class="px-2 py-5 font-bold text-gray-700 text-center">NO</th>
                 <th scope="col" class="px-4 py-5 font-semibold text-gray-700">Nama Ayah</th>
@@ -101,7 +101,8 @@ $result = mysqli_query($conn, "SELECT * FROM ortu_wali");
                             </button>
                         </span>
 
-                        <div role="menu" class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white">
+                        <div role="menu"
+                            class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white transition-all duration-200 origin-top-right scale-95 opacity-0">
                             <div>
                                 <a href="pages/orang_tua/edit.php?id_ortu_wali=<?= $row['id_ortu_wali']; ?>" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">Edit</a>
                                 <a href="#" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">Detail</a>

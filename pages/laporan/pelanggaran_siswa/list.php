@@ -3,18 +3,24 @@ define('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/poin_pelanggaran_siswa');
 include ROOTPATH . "/config/config.php";
 include ROOTPATH . "/includes/header.php";
 
-$result = mysqli_query($conn, "SELECT * FROM tahun_ajaran");
+$result = mysqli_query($conn, " SELECT pelanggaran_siswa.*, siswa.nama_siswa, jenis_pelanggaran.jenis
+FROM pelanggaran_siswa
+INNER JOIN siswa 
+ON pelanggaran_siswa.nis = siswa.nis
+INNER JOIN jenis_pelanggaran 
+ON pelanggaran_siswa.id_jenis_pelanggaran = jenis_pelanggaran.id_jenis_pelanggaran
+");
 ?>
 
 <div class="flex justify-between">
     <div>
-        <h2 class="text-3xl font-urbanist font-extrabold mb-2">Data Tahun Ajaran</h2>
-        <p>Kelola data tahun ajaran yang tersimpan pada sistem sekolah.</p>
+        <h2 class="text-3xl font-urbanist font-extrabold mb-2">Data Pelanggaran Siswa</h2>
+        <p>Kelola data pelanggaran siswa yang tersimpan pada sistem sekolah.</p>
     </div>
 
     <!-- Button -->
     <div>
-        <a href="pages/tahun_ajaran/add.php" class="group inline-flex items-center rounded-lg py-4 px-6 gap-1.5 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300">
+        <a href="pages/laporan/pelanggaran_siswa/add.php" class="group inline-flex items-center rounded-lg py-4 px-6 gap-1.5 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300">
             <svg class="w-5 h-5 transition-transform duration-600 group-hover:rotate-180" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12.998H13V18.998H11V12.998H5V10.998H11V4.99805H13V10.998H19V12.998Z" fill="currentColor" />
             </svg>
@@ -54,8 +60,11 @@ $result = mysqli_query($conn, "SELECT * FROM tahun_ajaran");
         <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-1 shadow-md">
             <tr>
                 <th scope="col" class="px-2 py-5 font-bold text-gray-700 text-center">NO</th>
-                <th scope="col" class="px-28 py-5 font-semibold text-gray-700">Tahun Ajaran</th>
-                <th scope="col" class="px-4 py-5 font-semibold text-gray-700 text-center">Status</th>
+                <th scope="col" class="px-4 py-5 font-semibold text-gray-700">Tanggal</th>
+                <th scope="col" class="px-4 py-5 font-semibold text-gray-700">NIS</th>
+                <th scope="col" class="px-4 py-5 font-semibold text-gray-700">Nama</th>
+                <th scope="col" class="px-4 py-5 font-semibold text-gray-700">Jenis Pelanggaran</th>
+                <th scope="col" class="px-4 py-5 font-semibold text-gray-700">Keterangan</th>
                 <th scope="col" class="px-4 py-5 font-semibold text-gray-700 text-center">Aksi</th>
             </tr>
         </thead>
@@ -67,12 +76,14 @@ $result = mysqli_query($conn, "SELECT * FROM tahun_ajaran");
             ?>
                 <tr class="bg-white hover:bg-gray-100 font-medium font-poppins transition text-sm">
                     <td class="px-2 py-4 font-bold text-[16px] text-center"><?= $no++; ?></td>
-                    <td class="px-28 py-4 font-medium"><?= $row['tahun']; ?></td>
-                    <td class="px-4 py-4 text-center">
-                        <div class="inline-block bg-gray-100 px-4 py-2 rounded-3xl border-2 border-gray-400 text-[12px] font-semibold">
-                            <?= $row['status'] == '1' ? 'Aktif' : 'Tidak Aktif';  ?>
-                        </div>
+                    <td class="px-4 py-4 font-medium">
+                        <div><?= date("d-m-Y", strtotime($row['tanggal'])) ?></div>
+                        <div class="text-xs text-gray-500"><?= date("H:i:s", strtotime($row['tanggal'])) ?></div>
                     </td>
+                    <td class="px-4 py-4 font-medium"><?= $row['nis']; ?></td>
+                    <td class="px-4 py-4 font-medium"><?= $row['nama_siswa']; ?></td>
+                    <td class="px-4 py-4 font-medium"><?= $row['jenis']; ?></td>
+                    <td class="px-4 py-4 font-medium"><?= $row['keterangan']; ?></td>
 
                     <!-- Dropdowns -->
                     <td class="px-4 py-4 relative flex justify-center">
@@ -88,9 +99,14 @@ $result = mysqli_query($conn, "SELECT * FROM tahun_ajaran");
                         <div role="menu"
                             class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white transition-all duration-200 origin-top-right scale-95 opacity-0">
                             <div>
-                                <a href="pages/tahun_ajaran/edit.php?id_tahun_ajaran=<?= $row['id_tahun_ajaran']; ?>" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">Edit</a>
+                                <a href="pages/laporan/pelanggaran_siswa/edit.php?id_pelanggaran_siswa=<?= $row['id_pelanggaran_siswa']; ?>" class="block px-3 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-blue-600" role="menuitem">
+                                    Edit
+                                </a>
                             </div>
-                            <a href="/poin_pelanggaran_siswa/process/tahun_ajaran/delete.php?id_tahun_ajaran=<?= $row['id_tahun_ajaran']; ?>" onclick="return confirm('Yakin ingin menghapus data ini?')" class="block w-full px-3 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">Hapus</a>
+                            <div>
+                                <a href="pages/laporan/detail_pelanggaran.php?nis=<?= $row['nis']; ?>" class="block px-3 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-blue-600" role="menuitem">
+                                    Preview</a>
+                            </div>
                         </div>
                     </td>
                 </tr>

@@ -11,9 +11,9 @@ $data = mysqli_fetch_assoc($result);
 <div class="flex justify-between items-center">
     <div>
         <h2 class="font-urbanist font-extrabold text-3xl mb-2">Tambah Data Orang Tua & Wali</h2>
-        <p>Silakan isi data orang tua / wali yang akan ditambahkan.</p>
+        <p>Perbarui data orang tua & wali yang dipilih.</p>
     </div>
-    
+
     <div class="flex gap-3">
         <!-- button batal simpan -->
         <a href="/poin_pelanggaran_siswa/pages/orang_tua/list.php"

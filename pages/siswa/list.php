@@ -37,7 +37,7 @@ $result = mysqli_query($conn, "SELECT * FROM siswa
 </div>
 
 <!-- Fitur Tabel -->
-<div class="flex items-center z-10 mt-16 justify-between rounded-md ">
+<div class="flex items-center z-1 mt-16 justify-between rounded-md ">
 
     <!-- Tab Status -->
     <div class="inline-flex font-poppins text-sm font-medium">
@@ -79,7 +79,7 @@ $result = mysqli_query($conn, "SELECT * FROM siswa
 <!-- Table Siswa -->
 <div class="relative overflow-visible border border-gray-200 rounded-lg shadow-sm mt-8">
     <table class="w-full text-sm text-left">
-        <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-10 shadow-md">
+        <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-1 shadow-md">
             <tr>
                 <th scope="col" class="py-4 pl-4">
                     <div class="flex items-center">
@@ -142,7 +142,8 @@ $result = mysqli_query($conn, "SELECT * FROM siswa
                             </button>
                         </span>
 
-                        <div role="menu" class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white">
+                        <div role="menu"
+                            class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white transition-all duration-200 origin-top-right scale-95 opacity-0">
                             <div>
                                 <a href="pages/siswa/edit.php?nis=<?= $row['nis']; ?>" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">
                                     Edit
@@ -153,8 +154,8 @@ $result = mysqli_query($conn, "SELECT * FROM siswa
                                 </a>
                             </div>
                             <a href="/poin_pelanggaran_siswa/process/siswa/siswa_delete.php?nis=<?= $row['nis']; ?>"
-                            onclick="return confirm('Yakin ingin menghapus data ini?')" 
-                            class="block w-full px-3 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">
+                                onclick="return confirm('Yakin ingin menghapus data ini?')"
+                                class="block w-full px-3 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">
                                 Hapus
                             </a>
                         </div>

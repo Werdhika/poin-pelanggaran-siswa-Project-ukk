@@ -10,8 +10,8 @@ $data = mysqli_fetch_assoc($result);
 
 <div class="flex justify-between items-center">
     <div>
-        <h2 class="font-urbanist font-extrabold text-3xl mb-2">Tambah Data Tahun Ajaran</h2>
-        <p>Silahkan isi data tahun ajaran yang akan ditambahkan.</p>
+        <h2 class="font-urbanist font-extrabold text-3xl mb-2">Edit Data Tahun Ajaran</h2>
+        <p>Perbarui data tahun ajaran yang dipilih.</p>
     </div>
 
     <div class="flex gap-3">
@@ -86,7 +86,7 @@ $data = mysqli_fetch_assoc($result);
                                 <input
                                     type="radio"
                                     name="status"
-                                    value="1"<?= $data['status'] == '1' ? 'checked' : ''; ?>
+                                    value="1" <?= $data['status'] == '1' ? 'checked' : ''; ?>
                                     id="status_aktif"
                                     class="sr-only"
                                     required
@@ -100,7 +100,7 @@ $data = mysqli_fetch_assoc($result);
                                 <input
                                     type="radio"
                                     name="status"
-                                    value="0"<?= $data['status'] == '0' ? 'checked' : ''; ?>
+                                    value="0" <?= $data['status'] == '0' ? 'checked' : ''; ?>
                                     id="status_tidak_aktif"
                                     class="sr-only">
                             </label>

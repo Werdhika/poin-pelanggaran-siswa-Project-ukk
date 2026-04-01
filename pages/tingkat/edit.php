@@ -48,8 +48,7 @@ $data = mysqli_fetch_assoc($result);
                 </div>
 
                 <div class="p-10 font-poppins font-medium text-sm rounded-b-lg border-2 border-t-0 border-gray-200">
-                    <div class="flex gap-4 w-full">
-
+                    <div class="w-full">
                         <div class="flex-5">
                             <label class="block mb-2 font-semibold">Tingkat</label>
                             <input

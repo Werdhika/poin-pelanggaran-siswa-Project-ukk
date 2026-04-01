@@ -1,33 +1,46 @@
-const button = document.getElementById('menuButton');
-const menu = document.getElementById('userMenu');
+document.addEventListener("DOMContentLoaded", () => {
 
-button.addEventListener('click', (e) => {
-    e.stopPropagation();
+    const dropdownButtons = document.querySelectorAll(".dropdown-nav-btn, .dropdown-btn");
+    const dropdownMenus = document.querySelectorAll(".dropdown-nav-menu, .dropdown-menu");
 
-    menu.classList.toggle('hidden');
-    menu.classList.toggle('scale-100');
-    menu.classList.toggle('opacity-100');
-});
+    function closeAllDropdowns() {
+        dropdownMenus.forEach(menu => {
+            menu.classList.add("hidden");
+            menu.classList.remove("scale-100","opacity-100");
+            menu.classList.add("scale-95","opacity-0");
+        });
 
-document.addEventListener('click', () => {
-    menu.classList.add('hidden');
-    menu.classList.remove('scale-100');
-    menu.classList.remove('opacity-100');
-});
+        document.querySelectorAll(".dropdown-icon").forEach(icon=>{
+            icon.classList.remove("rotate-180");
+        });
+    }
 
-document.addEventListener('click', function (e) {
-    const btn = e.target.closest('.dropdown-btn');
+    dropdownButtons.forEach(button => {
+        button.addEventListener("click", function(e) {
+            e.stopPropagation();
 
-    // tutup semua dropdown dulu
-    document.querySelectorAll('.dropdown-menu').forEach((menu) => {
-        menu.classList.add('hidden');
+            const parent = this.closest("li, td, div");
+            const menu = parent.querySelector(".dropdown-nav-menu, .dropdown-menu");
+            const icon = this.querySelector(".dropdown-icon");
+
+            const isOpen = !menu.classList.contains("hidden");
+
+            closeAllDropdowns();
+
+            if (!isOpen) {
+                menu.classList.remove("hidden");
+                menu.classList.add("scale-100","opacity-100");
+                menu.classList.remove("scale-95","opacity-0");
+
+                if(icon){
+                    icon.classList.add("rotate-180");
+                }
+            }
+        });
     });
 
-    // jika klik tombol, buka menu miliknya
-    if (btn) {
-        const td = btn.closest('td');
-        const menu = td.querySelector('.dropdown-menu');
-        menu.classList.toggle('hidden');
-        e.stopPropagation();
-    }
+    document.addEventListener("click", () => {
+        closeAllDropdowns();
+    });
+
 });
