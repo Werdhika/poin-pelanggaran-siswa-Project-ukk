@@ -24,7 +24,7 @@ $result = mysqli_query($conn, "SELECT * FROM jenis_pelanggaran");
 </div>
 
 <!-- Tabel Jenis Pelanggaran -->
-<div class="relative overflow-visible border border-gray-200 rounded-lg shadow-sm mt-14 mb-48">
+<div class="relative overflow-y-auto max-h-100 border border-gray-200 rounded-lg shadow-sm mt-14 mb-48">
     <table class="w-full text-sm text-left">
         <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-1 shadow-md">
             <tr>

@@ -1,3 +1,17 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include $_SERVER['DOCUMENT_ROOT'] . '/poin_pelanggaran_siswa/includes/auth.php';
+check_login();
+
+$role = $_SESSION['user']['role'] ?? '';
+$jabatan = $_SESSION['user']['jabatan'] ?? '';
+$guru = ($role == 'Guru' || $role == 'Guru BK' || $role == 'Wakasek' || $jabatan == 'Kepala Sekolah');
+
+date_default_timezone_set('Asia/Makassar'); // untuk Bali (WITA) 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="http://localhost/poin_pelanggaran_siswa/">
-    <title>Document</title>
+    <title>RuleSphere | Poin pelanggaran Siswa</title>
     <link rel="stylesheet" href="./src/output.css">
 </head>
 
@@ -23,13 +37,116 @@
                     <nav aria-label="Global" class="hidden md:block">
                         <ul class="flex items-center gap-4 text-sm">
                             <li>
-                                <a href="pages/dashboard.php" class="text-gray-500 text-sm font-poppins transition hover:text-black">Dashboard</a>
+                                <a href="pages/<?php echo $guru ? 'guru' : 'siswa'; ?>/dashboard.php" class="text-gray-500 text-sm font-poppins transition hover:text-black">
+                                    Dashboard</a>
                             </li>
+                            <?php if ($guru) : ?>
+                                <!-- Dropdown Kelola Data -->
+                                <li class="relative">   
+                                    <button class="dropdown-nav-btn flex items-center gap-1 text-gray-500 text-sm font-poppins hover:text-black transition">
+                                        Kelola Data
+                                        <svg class="w-4 h-4 transition-transform duration-200 dropdown-icon"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                d="m19 9-7 7-7-7" />
+                                        </svg>
+                                    </button>
 
-                            <!-- Dropdown Kelola Data -->
-                            <li class="relative">
+
+                                    <div class="dropdown-nav-menu absolute left-0 mt-7 z-10 hidden bg-white border border-gray-200 rounded-md shadow-md w-56">
+                                        <ul class="p-2 text-sm font-medium font-poppins text-gray-700">
+                                            <li>
+                                                <a href="pages/siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Siswa</a>
+                                            </li>
+
+                                            <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
+                                                <li>
+                                                    <a href="pages/guru/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Guru</a>
+                                                </li>
+                                            <?php endif; ?>
+
+                                            <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
+                                                <li>
+                                                    <a href="pages/program_keahlian/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Program Keahlian</a>
+                                                </li>
+                                            <?php endif; ?>
+
+                                            <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
+                                                <li>
+                                                    <a href="pages/tingkat/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">tingkat</a>
+                                                </li>
+                                            <?php endif; ?>
+
+                                            <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
+                                                <li>
+                                                    <a href="pages/kelas/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Kelas</a>
+                                                </li>
+                                            <?php endif; ?>
+
+                                            <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
+                                                <li>
+                                                    <a href="pages/jenis_pelanggaran/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Jenis Pelanggaran</a>
+                                                </li>
+                                            <?php endif; ?>
+
+                                            <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
+                                                <li>
+                                                    <a href="pages/tahun_ajaran/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Tahun Ajaran</a>
+                                                </li>
+                                            <?php endif; ?>
+
+                                            <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
+                                                <li><a href="pages/profil_sekolah/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Profil Sekolah</a></li>
+                                            <?php endif; ?>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <?php endif; ?>
+
+                                <li>
+                                    <a href="pages/laporan/pelanggaran_siswa/list.php" class="text-gray-500 text-sm font-poppins transition hover:text-black">Pelanggaran Siswa</a>
+                                </li>
+
+                            <?php if ($guru) : ?>
+                                <!-- Dropdown Surat & Laporan -->
+                                <li class="relative">
+                                    <button class="dropdown-nav-btn flex items-center gap-1 text-gray-500 text-sm font-poppins hover:text-black transition">
+                                        Laporan
+                                        <svg class="w-4 h-4 transition-transform duration-200 dropdown-icon"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                d="m19 9-7 7-7-7" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-nav-menu absolute left-0 mt-7 z-10 hidden bg-white border border-gray-200 rounded-md shadow-md w-56">
+                                        <ul class="p-2 text-sm font-medium font-poppins text-gray-700">
+                                            <!-- <li>
+                                            <a href="pages/laporan/surat_keluar/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Surat Keluar</a>
+                                        </li> -->
+                                            <li>
+                                                <a href="pages/laporan/panggilan_orang_tua/daftar_siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Laporan Surat Panggilan</a>
+                                            </li>
+                                            <li>
+                                                <a href="pages/laporan/perjanjian_ortu/daftar_siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Laporan Surat Perjanjian Ortu</a>
+                                            </li>
+                                            <li>
+                                                <a href="pages/laporan/perjanjian_siswa/daftar_siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Laporan Surat Perjanjian Siswa</a>
+                                            </li>
+                                            <li>
+                                                <a href="pages/laporan/surat_pindah/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Laporan Surat Pindah</a>
+                                            </li>
+                                            <li>
+                                                <a href="pages/laporan/list_rekapitulasi.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Laporan Rekapitulasi Surat Perjanjian</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            <?php endif; ?>
+
+                            <!-- <li class="relative">
                                 <button class="dropdown-nav-btn flex items-center gap-1 text-gray-500 text-sm font-poppins hover:text-black transition">
-                                    Kelola Data
+                                    Surat Panggilan Orang Tua
                                     <svg class="w-4 h-4 transition-transform duration-200 dropdown-icon"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -40,56 +157,19 @@
                                 <div class="dropdown-nav-menu absolute left-0 mt-7 z-10 hidden bg-white border border-gray-200 rounded-md shadow-md w-56">
                                     <ul class="p-2 text-sm font-medium font-poppins text-gray-700">
                                         <li>
-                                            <a href="pages/siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Siswa</a>
+                                            <a href="pages/laporan/panggilan_orang_tua/daftar_siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Surat Panggilan Ortu</a>
                                         </li>
 
                                         <li>
-                                            <a href="pages/guru/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Guru</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/orang_tua/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Orang Tua & Wali</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/jenis_pelanggaran/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Jenis Pelanggaran</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/program_keahlian/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Program Keahlian</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/tingkat/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">tingkat</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/kelas/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Kelas</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/jenis_pelanggaran/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Jenis Pelanggaran</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/tahun_ajaran/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Tahun Ajaran</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/surat_pindah/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Surat Pindah</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/profil_sekolah/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Profil Sekolah</a>
+                                            <a href="pages/laporan/panggilan_orang_tua/daftar_panggilan/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">List Surat Panggilan Ortu</a>
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> -->
 
-                            <!-- Dropdown Surat & Laporan -->
-                            <li class="relative">
+                            <!-- <li class="relative">
                                 <button class="dropdown-nav-btn flex items-center gap-1 text-gray-500 text-sm font-poppins hover:text-black transition">
-                                    Surat & Laporan
+                                    Surat Perjanjian
                                     <svg class="w-4 h-4 transition-transform duration-200 dropdown-icon"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -100,23 +180,15 @@
                                 <div class="dropdown-nav-menu absolute left-0 mt-7 z-10 hidden bg-white border border-gray-200 rounded-md shadow-md w-56">
                                     <ul class="p-2 text-sm font-medium font-poppins text-gray-700">
                                         <li>
-                                            <a href="pages/surat_keluar/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Surat Keluar</a>
+                                            <a href="pages/laporan/perjanjian_ortu/daftar_siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Surat Perjanjian Ortu</a>
                                         </li>
 
                                         <li>
-                                            <a href="pages/siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Surat Perjanjian Siswa</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/laporan/pelanggaran_siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Surat Pelanggaran Siswa</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="pages/siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Surat Perjanjian Orang Tua</a>
+                                            <a href="pages/laporan/perjanjian_orang_tua/daftar_siswa/list.php" class="block p-2 rounded-sm hover:bg-gray-100 transition">Surat Perjanjian Siswa</a>
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </nav>
 
@@ -138,7 +210,7 @@
                             </div>
 
                             <div class="p-2">
-                                <form method="POST" action="#">
+                                <form method="POST" action="process/logout_process.php">
                                     <button type="submit"
                                         class="flex w-full items-center gap-2 rounded-md px-4 py-2 text-sm font-medium font-poppins text-red-700 hover:bg-red-50" role="menuitem">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
@@ -154,4 +226,4 @@
             </div>
         </div>
     </header>
-    <main class="mx-auto max-w-7xl lg:px-7 pt-16 print:pt-0!">
+    <main class="mx-auto max-w-7xl lg:px-7 pt-12 print:pt-0!">

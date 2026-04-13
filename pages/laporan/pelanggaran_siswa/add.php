@@ -82,7 +82,7 @@ $resultJenisPelanggaran = mysqli_query($conn, "SELECT * FROM jenis_pelanggaran")
                                     <?php
                                     while ($jenis_pelanggaran = mysqli_fetch_assoc($resultJenisPelanggaran)) { ?>
                                         <option value="<?= $jenis_pelanggaran['id_jenis_pelanggaran'] ?>">
-                                            <?= $jenis_pelanggaran['jenis'] ?>
+                                            <?= $jenis_pelanggaran['jenis'] ?> + <?= $jenis_pelanggaran['poin'] ?>
                                         </option>
                                     <?php } ?>
                                 </select>

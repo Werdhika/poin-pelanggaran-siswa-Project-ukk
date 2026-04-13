@@ -8,7 +8,7 @@ $id = $_POST['id_pelanggaran_siswa'];
 $nis = $_POST['nis'];
 $id_jenis_pelanggaran = $_POST['id_jenis_pelanggaran'];
 $keterangan = $_POST['keterangan'];
-$tanggal = date("Y-m-d H:i:s");
+$tanggal = $_POST['tanggal'];
 
 $query = mysqli_query($conn, "UPDATE pelanggaran_siswa SET
 nis ='$nis',

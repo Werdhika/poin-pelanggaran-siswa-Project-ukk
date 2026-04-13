@@ -2,23 +2,22 @@
 define('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/poin_pelanggaran_siswa');
 include ROOTPATH . "/config/config.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+$kode_guru = $_POST['kode_guru'];
+$username = $_POST['username'];
+$nama = $_POST['nama'];
+$role = $_POST['role'];
+$status = $_POST['status'];
+$jabatan = $_POST['jabatan'];
+$telp = $_POST['telp'];
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $kode_guru = $_POST['kode_guru'];
-    $nama = $_POST['nama'];
-    $role = $_POST['role'];
-    $status_guru = $_POST['status_guru'];
-    $jabatan = $_POST['jabatan'];
-    $telp = $_POST['telp'];
+$data = "INSERT INTO guru (kode_guru, nama, username, role, status, jabatan, telp, password) 
+    VALUES ('$kode_guru', '$nama', '$username', '$role', '$status', '$jabatan', '$telp', '$password')";
 
-    $data = "INSERT INTO guru (kode_guru, nama, role, status_guru, jabatan, telp) 
-    VALUES ('$kode_guru', '$nama', '$role', '$status_guru', '$jabatan', '$telp')";
+$query = mysqli_query($conn, $data);
 
-    $query = mysqli_query($conn, $data);
-
-    if ($query) {
-        header("location: /poin_pelanggaran_siswa/pages/guru/list.php");
-    } else {
-        echo "Gagal Menambahkan Data";
-    }
+if ($query) {
+    header("location: /poin_pelanggaran_siswa/pages/guru/list.php");
+} else {
+    echo "Gagal Menambahkan Data";
 }

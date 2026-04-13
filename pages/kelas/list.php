@@ -4,23 +4,23 @@ include ROOTPATH . "/config/config.php";
 include ROOTPATH . "/includes/header.php";
 
 $result = mysqli_query($conn, "SELECT  
-kelas.id_kelas,
-tingkat.tingkat,
-program_keahlian.program_keahlian,
-kelas.rombel,
-guru.nama,
-guru.kode_guru
-FROM kelas
-    LEFT JOIN tingkat ON kelas.id_tingkat = tingkat.id_tingkat
-    LEFT JOIN program_keahlian ON kelas.id_program_keahlian = program_keahlian.id_program_keahlian
-    LEFT JOIN guru on kelas.kode_guru = guru.kode_guru
+                                a.id_kelas,
+                                b.tingkat,
+                                c.program_keahlian,
+                                a.rombel,
+                                d.kode_guru,
+                                d.nama
+                            FROM kelas a
+    LEFT JOIN tingkat b ON a.id_tingkat = b.id_tingkat
+    LEFT JOIN program_keahlian c ON a.id_program_keahlian = c.id_program_keahlian
+    LEFT JOIN guru d on a.kode_guru = d.kode_guru
     ");
 ?>
 
 <!-- Title -->
 <div class="flex justify-between items-center">
     <div>
-        <h2 class="text-3xl font-urbanist font-bold mb-2">Data Kelas</h2>
+        <h2 class="text-3xl font-urbanist font-bold mb-2">Daftar Data Kelas</h2>
         <p>Kelola data kelas yang tersimpan pada sistem sekolah.</p>
     </div>
 
@@ -35,7 +35,7 @@ FROM kelas
     </div>
 </div>
 
-<div class="relative overflow-visible border border-gray-200 rounded-lg shadow-sm mt-14 mb-48">
+<div class="relative overflow-y-auto max-h-100 border border-gray-200 rounded-lg shadow-sm mt-14 mb-48">
     <table class="w-full text-sm text-left">
         <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-1 shadow-md">
             <tr>
