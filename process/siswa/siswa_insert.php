@@ -7,7 +7,7 @@ $nama_siswa = $_POST['nama_siswa'];
 $id_kelas = $_POST['id_kelas'];
 $alamat = $_POST['alamat'];
 $jenis_kelamin = $_POST['jenis_kelamin'];
-$status_siswa = $_POST['status_siswa'];
+$status = $_POST['status'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 $ayah = $_POST['ayah'];
@@ -31,7 +31,7 @@ $alamat_wali = $_POST['alamat_wali'];
 
 //! Menambahkan data siswa
 $query_siswa = mysqli_query($conn, "INSERT INTO siswa (nama_siswa, nis, alamat, id_kelas, jenis_kelamin, status, password) 
-VALUES ('$nama_siswa', '$nis', '$alamat', '$id_kelas', '$jenis_kelamin', '$status_siswa', '$password')");
+VALUES ('$nama_siswa', '$nis', '$alamat', '$id_kelas', '$jenis_kelamin', '$status', '$password')");
 
 //! Menambahkan data ortu_wali
 $query_ortu_wali = mysqli_query($conn, "INSERT INTO ortu_wali (nis, ayah, ibu, wali, tempat_lahir_ayah, tempat_lahir_ibu, tempat_lahir_wali, tanggal_lahir_ayah, tanggal_lahir_ibu, tanggal_lahir_wali , pekerjaan_ayah, pekerjaan_ibu, pekerjaan_wali, no_telp_ayah, no_telp_ibu, no_telp_wali, alamat_ayah, alamat_ibu, alamat_wali) 

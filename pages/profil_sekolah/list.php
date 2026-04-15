@@ -52,7 +52,7 @@ $result = mysqli_query($conn, "SELECT * FROM profil_sekolah");
 
                     <!-- Dropdowns -->
                     <td class="px-8 py-4 relative flex justify-center">
-                        <span class="inline-flex divide-x divide-gray-300 overflow-hidden rounded-lg border border-gray-300 bg-white">
+                        <span class="inline-flex divide-x divide-gray-300 overflow-hidden rounded-lg border hover:border-black focus-within:border-black border-gray-300 bg-white transition">
                             <button type="button"
                                 class="dropdown-btn px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
                                 <svg class="size-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,9 +64,9 @@ $result = mysqli_query($conn, "SELECT * FROM profil_sekolah");
                         <div role="menu"
                             class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white transition-all duration-200 origin-top-right scale-95 opacity-0">
                             <div>
-                                <a href="pages/profil_sekolah/edit.php?id_profil_sekolah=<?= $row['id_profil_sekolah']; ?>" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">Edit</a>
+                                <a href="pages/profil_sekolah/edit.php?id_profil_sekolah=<?= $row['id_profil_sekolah']; ?>" class="block px-2.5 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-blue-600" role="menuitem">Edit</a>
                             </div>
-                            <a href="/poin_pelanggaran_siswa/process/profil_sekolah/delete.php?id_profil_sekolah=<?= $row['id_profil_sekolah']; ?>" onclick="return confirm('Yakin ingin menghapus data ini?')" class="block w-full px-3 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">Hapus</a>
+                            <a href="/poin_pelanggaran_siswa/process/profil_sekolah/delete.php?id_profil_sekolah=<?= $row['id_profil_sekolah']; ?>" onclick="return confirm('Yakin ingin menghapus data ini?')" class="block w-full px-2.5 py-2.5 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">Hapus</a>
                         </div>
                     </td>
                 </tr>

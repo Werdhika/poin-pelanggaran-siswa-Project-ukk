@@ -28,51 +28,58 @@ $data = mysqli_fetch_assoc($result);
     </div>
 </div>
 
-<form id="formProgramkeahlian" action="/poin_pelanggaran_siswa/process/program_keahlian/update.php" method="POST">
+<form id="formProgramkeahlian" action="/poin_pelanggaran_siswa/process/program_keahlian/update.php" method="POST" autocomplete="off">
     <input type="hidden" name="id_program_keahlian" value="<?= $data['id_program_keahlian']; ?>">
-    <div class="w-full mt-16 flex gap-8 px-28">
-        <div class="flex-2">
-            <div class="bg-white rounded-md shadow-md overflow-hidden">
-                <div class="flex px-7 py-3.5 gap-3 text-gray-700 text-[18px] font-urbanist rounded-t-lg font-extrabold   items-center bg-gray-100 border-2 border-gray-200">
-                    <div class="flex p-2.5 bg-blue-100 rounded-md items-center justify-center">
-                        <svg class="size-4" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.99935 5.83335C8.28801 5.83335 9.33268 4.78868 9.33268 3.50002C9.33268 2.21136 8.28801 1.16669 6.99935 1.16669C5.71068 1.16669 4.66602 2.21136 4.66602 3.50002C4.66602 4.78868 5.71068 5.83335 6.99935 5.83335Z" stroke="#0088FF" stroke-width="1.5" />
-                            <path d="M11.6663 10.2084C11.6663 11.658 11.6663 12.8334 6.99967 12.8334C2.33301 12.8334 2.33301 11.658 2.33301 10.2084C2.33301 8.75879 4.42251 7.58337 6.99967 7.58337C9.57684 7.58337 11.6663 8.75879 11.6663 10.2084Z" stroke="#0088FF" stroke-width="1.5" />
-                        </svg>
+    <form id="formProgramkeahlian" action="/poin_pelanggaran_siswa/process/program_keahlian/insert.php" method="POST">
+        <div class="w-full mt-16 flex gap-8 px-28">
+            <div class="flex-2">
+                <div class="bg-white rounded-md shadow-md overflow-hidden">
+                    <div class="flex px-7 py-3.5 gap-3 text-gray-700 text-[18px] font-urbanist rounded-t-lg font-extrabold items-center bg-gray-100 border-2 border-gray-200">
+                        <div class="flex p-3 bg-blue-100 rounded-xl items-center justify-center">
+                            <svg class="size-4" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 10.25H11.5M11.5 2.62C11.5 3.79 9.038 4.74 6 4.74C2.962 4.74 0.5 3.79 0.5 2.62C0.5 1.45 2.962 0.5 6 0.5C9.038 0.5 11.5 1.45 11.5 2.62ZM11.5 2.62V4.5M10.25 13.5C11.112 13.5 11.9386 13.1576 12.5481 12.5481C13.1576 11.9386 13.5 11.112 13.5 10.25C13.5 9.38805 13.1576 8.5614 12.5481 7.9519C11.9386 7.34241 11.112 7 10.25 7C9.38805 7 8.5614 7.34241 7.9519 7.9519C7.34241 8.5614 7 9.38805 7 10.25C7 11.112 7.34241 11.9386 7.9519 12.5481C8.5614 13.1576 9.38805 13.5 10.25 13.5Z" stroke="#0088FF" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M0.5 2.62V9.38C0.5 10.31 2.04 11.09 4.19 11.38" stroke="#0088FF" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M4.49 8C2.19 7.78 0.5 7 0.5 6" stroke="#0088FF" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span>PROGRAM KEAHLIAN</span>
                     </div>
-                    <span>PROGRAM KEAHLIAN</span>
-                </div>
 
-                <div class="p-10 font-poppins font-medium text-sm rounded-b-lg border-2 border-t-0 border-gray-200">
-                    <div class="flex gap-4 w-full">
+                    <div class="p-10 font-poppins font-medium text-sm rounded-b-lg border-2 border-t-0 border-gray-200">
+                        <div class="flex gap-4 w-full">
 
-                        <div class="flex-5">
-                            <label class="block mb-2 font-semibold">Nama Program Keahlian</label>
-                            <input
-                                type="text"
-                                name="deskripsi"
-                                value="<?= $data['deskripsi']; ?>"
-                                class="w-full border border-gray-300 p-2.5 rounded-md box-border"
-                                required
-                                oninvalid="this.setCustomValidity('Masukkan nama program keahlian')"
-                                oninput="this.setCustomValidity('')">
+                            <div class="flex-5">
+                                <label class="block mb-2 font-semibold">Nama Program Keahlian</label>
+                                <input
+                                    type="text"
+                                    name="deskripsi"
+                                    value="<?= $data['deskripsi']; ?>"
+                                    placeholder="Silakan masukkan nama program keahlian"
+                                    class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black"
+                                    required
+                                    oninvalid="this.setCustomValidity('Nama program keahlian tidak boleh kosong!')"
+                                    oninput="this.setCustomValidity('')">
+                            </div>
+
+                            <div class="flex-2">
+                                <label class="block mb-2 font-semibold">Kode Program Keahlian</label>
+                                <input
+                                    type="text"
+                                    name="program_keahlian"
+                                    value="<?= $data['program_keahlian']; ?>"
+                                    placeholder="Masukkan kode program"
+                                    class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black"
+                                    required
+                                    oninvalid="this.setCustomValidity('Kode program keahlian tidak boleh kosong!')"
+                                    oninput="this.setCustomValidity('')">
+                            </div>
                         </div>
-
-                        <div class="flex-2">
-                            <label class="block mb-2 font-semibold">Kode Program Keahlian</label>
-                            <input
-                                type="text"
-                                name="program_keahlian"
-                                value="<?= $data['program_keahlian']; ?>"
-                                class="w-full border border-gray-300 p-2.5 rounded-md box-border"
-                                required
-                                oninvalid="this.setCustomValidity('Masukkan kode program keahlian, contoh: RPL atau TKJ.')"
-                                oninput="this.setCustomValidity('')">
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+
+    <?php
+    include ROOTPATH . "/includes/footer.php";
+    ?>

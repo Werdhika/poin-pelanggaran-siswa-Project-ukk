@@ -24,22 +24,14 @@ $result = mysqli_query($conn, "SELECT * FROM jenis_pelanggaran");
 </div>
 
 <!-- Tabel Jenis Pelanggaran -->
-<div class="relative overflow-y-auto max-h-100 border border-gray-200 rounded-lg shadow-sm mt-14 mb-48">
+<div class="relative overflow-y-auto max-h-100 border border-gray-200 rounded-lg shadow-sm mt-8 mb-48">
     <table class="w-full text-sm text-left">
         <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-1 shadow-md">
             <tr>
-                <th scope="col" class="px-2 py-5 font-bold text-gray-700 text-center">
-                    NO
-                </th>
-                <th scope="col" class="px-4 py-5 font-semibold text-gray-700">
-                    Jenis Pelanggaran
-                </th>
-                <th scope="col" class="px-4 py-5 font-semibold text-gray-700 text-center">
-                    Poin Pelanggaran
-                </th>
-                <th scope="col" class="px-4 py-5 font-semibold text-gray-700 justify-center text-center">
-                    Aksi
-                </th>
+                <th scope="col" class="px-2 py-5 font-bold text-gray-700 text-center">NO</th>
+                <th scope="col" class="px-4 py-5 font-bold text-gray-700">Jenis Pelanggaran</th>
+                <th scope="col" class="px-4 py-5 font-bold text-gray-700 text-center">Poin Pelanggaran</th>
+                <th scope="col" class="px-4 py-5 font-bold text-gray-700 justify-center text-center">Aksi</th>
             </tr>
         </thead>
 
@@ -52,14 +44,14 @@ $result = mysqli_query($conn, "SELECT * FROM jenis_pelanggaran");
                     <td class="px-2 py-4 font-bold text-[16px] text-center"><?= $no++; ?></td>
                     <td class="px-4 py-4"><?= $row['jenis']; ?></td>
                     <td class="px-4 py-4 text-center">
-                        <div class="inline-block bg-gray-100 px-4 py-2 rounded-3xl border-2 border-gray-400 text-[12px] font-semibold">
+                        <div class="inline-block bg-gray-100 px-4 py-1.5 rounded-3xl border-2 border-gray-400 text-[12px] font-semibold">
                             <?= $row['poin']; ?> Poin
                         </div>
                     </td>
 
                     <!-- Dropdowns -->
                     <td class="px-4 py-4 relative flex justify-center">
-                        <span class="inline-flex divide-x divide-gray-300 overflow-hidden rounded-lg border border-gray-300 bg-white">
+                        <span class="inline-flex divide-x divide-gray-300 overflow-hidden rounded-lg border hover:border-black focus-within:border-black border-gray-300 bg-white transition">
                             <button type="button"
                                 class="dropdown-btn px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
                                 <svg class="size-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -71,14 +63,14 @@ $result = mysqli_query($conn, "SELECT * FROM jenis_pelanggaran");
                         <div role="menu"
                             class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white transition-all duration-200 origin-top-right scale-95 opacity-0">
                             <div>
-                                <a href="pages/jenis_pelanggaran/edit.php?id_jenis_pelanggaran=<?= $row['id_jenis_pelanggaran']; ?>" class="block px-3 py-3 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-blue-600" role="menuitem">
+                                <a href="pages/jenis_pelanggaran/edit.php?id_jenis_pelanggaran=<?= $row['id_jenis_pelanggaran']; ?>" class="block px-2.5 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-blue-600" role="menuitem">
                                     Edit
                                 </a>
                             </div>
 
                             <a href="/poin_pelanggaran_siswa/process/jenis_pelanggaran/delete.php?id_jenis_pelanggaran=<?= $row['id_jenis_pelanggaran']; ?>"
                                 onclick="return confirm('Yakin ingin menghapus data ini?')"
-                                class="block w-full px-3 py-3 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">
+                                class="block w-full px-2.5 py-2.5 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">
                                 Hapus
                             </a>
                         </div>

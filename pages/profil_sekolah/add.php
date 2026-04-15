@@ -25,17 +25,17 @@ include ROOTPATH . "/includes/header.php";
 </div>
 
 <form id="formProfil_sekolah" action="/poin_pelanggaran_siswa/process/profil_sekolah/insert.php" method="POST">
-    <div class="w-full mt-16 px-28">
+    <div class="w-full mt-16 px-28 mb-8">
         <div class="flex-2">
             <div class="bg-white rounded-md shadow-md overflow-hidden">
-                <div class="flex px-7 py-3.5 gap-3 text-gray-700 text-[18px] font-urbanist rounded-t-lg font-extrabold   items-center bg-gray-100 border-2 border-gray-200">
-                    <div class="flex p-2.5 bg-blue-100 rounded-md items-center justify-center">
-                        <svg class="size-4" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.99935 5.83335C8.28801 5.83335 9.33268 4.78868 9.33268 3.50002C9.33268 2.21136 8.28801 1.16669 6.99935 1.16669C5.71068 1.16669 4.66602 2.21136 4.66602 3.50002C4.66602 4.78868 5.71068 5.83335 6.99935 5.83335Z" stroke="#0088FF" stroke-width="1.5" />
-                            <path d="M11.6663 10.2084C11.6663 11.658 11.6663 12.8334 6.99967 12.8334C2.33301 12.8334 2.33301 11.658 2.33301 10.2084C2.33301 8.75879 4.42251 7.58337 6.99967 7.58337C9.57684 7.58337 11.6663 8.75879 11.6663 10.2084Z" stroke="#0088FF" stroke-width="1.5" />
+                <div class="flex px-7 py-3.5 gap-3 text-gray-700 text-[18px] font-urbanist rounded-t-lg font-extrabold items-center bg-gray-100 border-2 border-gray-200">
+                    <div class="flex p-3 bg-blue-100 rounded-xl items-center justify-center">
+                        <svg class="size-5" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.5 8.25V12C16.5 13.7678 16.5 14.6512 15.951 15.201C15.4012 15.75 14.5177 15.75 12.75 15.75H5.25C3.48225 15.75 2.598 15.75 2.049 15.201C1.5 14.6512 1.5 13.7678 1.5 12V8.25C1.5 7.2 1.5 6.675 1.704 6.27375C1.88379 5.92077 2.17077 5.63379 2.52375 5.454C2.925 5.25 3.45 5.25 4.5 5.25L7.2 3.225C8.067 2.57475 8.49975 2.25 9 2.25C9.50025 2.25 9.933 2.57475 10.8 3.225L13.5 5.25C14.55 5.25 15.075 5.25 15.4762 5.454C15.829 5.63392 16.1156 5.92088 16.2952 6.27375C16.5 6.675 16.5 7.2 16.5 8.25Z" stroke="#0088FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.5 15.75V13.5C7.5 13.1022 7.65803 12.7206 7.93934 12.4393C8.22064 12.158 8.60217 12 9 12C9.39782 12 9.77935 12.158 10.0607 12.4393C10.342 12.7206 10.5 13.1022 10.5 13.5V15.75M4.875 8.25H4.125V9H4.875V8.25ZM4.875 11.625H4.125V12.375H4.875V11.625ZM13.875 8.25H13.125V9H13.875V8.25ZM13.875 11.625H13.125V12.375H13.875V11.625ZM9 9C9.39782 9 9.77935 8.84196 10.0607 8.56066C10.342 8.27935 10.5 7.89782 10.5 7.5C10.5 7.10217 10.342 6.72064 10.0607 6.43934C9.77935 6.15804 9.39782 6 9 6C8.60217 6 8.22064 6.15804 7.93934 6.43934C7.65803 6.72064 7.5 7.10217 7.5 7.5C7.5 7.89782 7.65803 8.27935 7.93934 8.56066C8.22064 8.84196 8.60217 9 9 9Z" stroke="#0088FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <span>SURAT PINDAH</span>
+                    <span>PROFIL SEKOLAH</span>
                 </div>
 
                 <div class="p-8 space-y-6 font-poppins font-medium text-sm rounded-b-lg border-2 border-t-0 border-gray-200">
@@ -47,7 +47,7 @@ include ROOTPATH . "/includes/header.php";
                             placeholder="Silakan masukkan nama profil sekolah."
                             class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black "
                             required
-                            oninvalid="this.setCustomValidity('Silahkan isi data surat pindah')"
+                            oninvalid="this.setCustomValidity('Nama profil sekolah tidak boleh kosong!')"
                             oninput="this.setCustomValidity('')">
                     </div>
 
@@ -59,7 +59,7 @@ include ROOTPATH . "/includes/header.php";
                             placeholder="Silakan masukkan wilayah sekolah."
                             class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black "
                             required
-                            oninvalid="this.setCustomValidity('Silahkan isi data surat pindah')"
+                            oninvalid="this.setCustomValidity('Wilayah sekolah tidak boleh kosong!')"
                             oninput="this.setCustomValidity('')">
                     </div>
 
@@ -68,8 +68,11 @@ include ROOTPATH . "/includes/header.php";
                         <textarea
                             name="alamat_sekolah"
                             placeholder="Silakan masukkan alamat sekolah."
-                            class="w-full border border-gray-300 p-3.5 rounded-md box-border focus:outline-none focus:border-black "
-                            rows="2"></textarea>
+                            class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black"
+                            required
+                            oninvalid="this.setCustomValidity('Alamat sekolah tidak boleh kosong!')"
+                            oninput="this.setCustomValidity('')"
+                            rows="4"></textarea>
                     </div>
                 </div>
             </div>

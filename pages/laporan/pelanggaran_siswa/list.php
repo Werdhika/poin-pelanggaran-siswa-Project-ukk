@@ -44,7 +44,7 @@ ORDER BY tanggal DESC
                 <th class="px-4 py-5">Tanggal</th>
                 <th class="px-4 py-5">NIS</th>
                 <th class="px-4 py-5">Nama</th>
-                <th class="px-4 py-5">Jenis Pelanggaran</th>
+                <th class="px-0 py-5">Jenis Pelanggaran</th>
                 <th class="px-4 py-5">Total Point</th>
                 <th class="px-4 py-5 text-center">Aksi</th>
             </tr>
@@ -68,7 +68,7 @@ ORDER BY tanggal DESC
 
                         <td class="px-4 py-4"><?= $row['nama_siswa']; ?></td>
 
-                        <td class="px-4 py-4"><?= $row['jenis']; ?></td>
+                        <td class="px-0 py-4 max-w-80"><?= $row['jenis']; ?></td>
 
                         <td class="px-4 py-4 font-bold text-red-600">
                             <?= $row['total_point']; ?> Point

@@ -24,14 +24,14 @@ $result = mysqli_query($conn, "SELECT * FROM tahun_ajaran");
 </div>
 
 <!-- Tabel Siswa -->
-<div class="relative overflow-y-auto max-h-100 border border-gray-200 rounded-lg shadow-sm mt-16 mb-32">
+<div class="relative overflow-y-auto max-h-100 border border-gray-200 rounded-lg shadow-sm mt-8 mb-32">
     <table class="w-full text-sm text-left">
         <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-1 shadow-md">
             <tr>
                 <th scope="col" class="px-2 py-5 font-bold text-gray-700 text-center">NO</th>
-                <th scope="col" class="px-28 py-5 font-semibold text-gray-700">Tahun Ajaran</th>
-                <th scope="col" class="px-4 py-5 font-semibold text-gray-700 text-center">Status</th>
-                <th scope="col" class="px-4 py-5 font-semibold text-gray-700 text-center">Aksi</th>
+                <th scope="col" class="px-28 py-5 font-bold text-gray-700">Tahun Ajaran</th>
+                <th scope="col" class="px-4 py-5 font-bold text-gray-700 text-center">Status</th>
+                <th scope="col" class="px-4 py-5 font-bold text-gray-700 text-center">Aksi</th>
             </tr>
         </thead>
 
@@ -40,18 +40,31 @@ $result = mysqli_query($conn, "SELECT * FROM tahun_ajaran");
             $no = 1;
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
-                <tr class="bg-white hover:bg-gray-100 font-medium font-poppins transition text-sm">
+                <tr class="bg-white hover:bg-gray-100 font-semibold font-poppins transition text-sm">
                     <td class="px-2 py-4 font-bold text-[16px] text-center"><?= $no++; ?></td>
-                    <td class="px-28 py-4 font-medium"><?= $row['tahun']; ?></td>
+                    <td class="px-28 py-4"><?= $row['tahun']; ?></td>
                     <td class="px-4 py-4 text-center">
-                        <div class="inline-block bg-gray-100 px-4 py-2 rounded-3xl border-2 border-gray-400 text-[12px] font-semibold">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-3xl border-2 text-[12px]
+                            <?= match ($row['status']) {
+                                '1' => 'bg-green-50 border-green-600 text-black',
+                                '0' => 'bg-red-50 border-red-400 text-black',
+                                default => 'bg-gray-100 border-gray-400 text-black'
+                            }; ?>
+                        ">
+                            <span class="w-1.5 h-1.5 rounded-full
+                                    <?= match ($row['status']) {
+                                        '1' => 'bg-green-600',
+                                        '0' => 'bg-red-500',
+                                        default => 'bg-gray-500'
+                                    }; ?>
+                            "></span>
                             <?= $row['status'] == '1' ? 'Aktif' : 'Tidak Aktif';  ?>
                         </div>
                     </td>
 
                     <!-- Dropdowns -->
                     <td class="px-4 py-4 relative flex justify-center">
-                        <span class="inline-flex divide-x divide-gray-300 overflow-hidden rounded-lg border border-gray-300 bg-white">
+                        <span class="inline-flex divide-x divide-gray-300 overflow-hidden rounded-lg border hover:border-black focus-within:border-black border-gray-300 bg-white transition">
                             <button type="button"
                                 class="dropdown-btn px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
                                 <svg class="size-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,9 +76,9 @@ $result = mysqli_query($conn, "SELECT * FROM tahun_ajaran");
                         <div role="menu"
                             class="dropdown-menu hidden absolute end-0 top-12 z-10 w-40 divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-300 bg-white transition-all duration-200 origin-top-right scale-95 opacity-0">
                             <div>
-                                <a href="pages/tahun_ajaran/edit.php?id_tahun_ajaran=<?= $row['id_tahun_ajaran']; ?>" class="block px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900" role="menuitem">Edit</a>
+                                <a href="pages/tahun_ajaran/edit.php?id_tahun_ajaran=<?= $row['id_tahun_ajaran']; ?>" class="block px-2.5 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-blue-600" role="menuitem">Edit</a>
                             </div>
-                            <a href="/poin_pelanggaran_siswa/process/tahun_ajaran/delete.php?id_tahun_ajaran=<?= $row['id_tahun_ajaran']; ?>" onclick="return confirm('Yakin ingin menghapus data ini?')" class="block w-full px-3 py-2 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">Hapus</a>
+                            <a href="/poin_pelanggaran_siswa/process/tahun_ajaran/delete.php?id_tahun_ajaran=<?= $row['id_tahun_ajaran']; ?>" onclick="return confirm('Yakin ingin menghapus data ini?')" class="block w-full px-2.5 py-2.5 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 ltr:text-left rtl:text-right">Hapus</a>
                         </div>
                     </td>
                 </tr>

@@ -54,7 +54,7 @@ if ($nis_akhir == null) {
                 <!-- Header Identitas Siswa -->
                 <div class="flex px-7 py-3.5 gap-3 text-gray-700 text-[18px] font-urbanist rounded-t-lg font-extrabold items-center bg-gray-100 border-2 border-gray-200">
                     <div class="flex p-3 bg-blue-100 rounded-xl items-center justify-center">
-                        <svg class="size-4" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="size-4" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.99935 5.83335C8.28801 5.83335 9.33268 4.78868 9.33268 3.50002C9.33268 2.21136 8.28801 1.16669 6.99935 1.16669C5.71068 1.16669 4.66602 2.21136 4.66602 3.50002C4.66602 4.78868 5.71068 5.83335 6.99935 5.83335Z" stroke="#0088FF" stroke-width="1.5" />
                             <path d="M11.6663 10.2084C11.6663 11.658 11.6663 12.8334 6.99967 12.8334C2.33301 12.8334 2.33301 11.658 2.33301 10.2084C2.33301 8.75879 4.42251 7.58337 6.99967 7.58337C9.57684 7.58337 11.6663 8.75879 11.6663 10.2084Z" stroke="#0088FF" stroke-width="1.5" />
                         </svg>
@@ -149,12 +149,13 @@ if ($nis_akhir == null) {
                     <div>
                         <p class="block mb-2 font-semibold font-poppins">Jenis Kelamin</p>
                         <div class="flex gap-4">
+                            <!-- Laki-laki -->
                             <div class="w-full">
-                                <label for="laki-laki" class="flex items-center justify-center gap-2 rounded-lg border text-gray-700 has-checked:text-blue-600 border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
+                                <label for="laki-laki" class="flex items-center justify-center gap-2 rounded-lg border has-checked:text-blue-800 border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
                                     <svg class="size-3.5" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M14.75 0.75L9.35 6.15M14.75 0.75H9.75M14.75 0.75V5.75M0.75 9.75C0.75 11.0761 1.27678 12.3479 2.21447 13.2855C3.15215 14.2232 4.42392 14.75 5.75 14.75C7.07608 14.75 8.34785 14.2232 9.28553 13.2855C10.2232 12.3479 10.75 11.0761 10.75 9.75C10.75 8.42392 10.2232 7.15215 9.28553 6.21447C8.34785 5.27678 7.07608 4.75 5.75 4.75C4.42392 4.75 3.15215 5.27678 2.21447 6.21447C1.27678 7.15215 0.75 8.42392 0.75 9.75Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                    <p class=" font-medium">Laki-laki</p>
+                                    <p>Laki-laki</p>
                                     <input type="radio" name="jenis_kelamin" value="Laki - Laki" id="laki-laki" class="sr-only"
                                         required
                                         oninvalid="this.setCustomValidity('Pilih jenis kelamin terlebih dahulu')"
@@ -162,9 +163,13 @@ if ($nis_akhir == null) {
                                 </label>
                             </div>
 
+                            <!-- Perempuan -->
                             <div class="w-full">
-                                <label for="perempuan" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-pink-600 has-checked:ring-1 has-checked:ring-pink-600 has-checked:bg-pink-100">
-                                    <p class="text-gray-700">Perempuan</p>
+                                <label for="perempuan" class="flex items-center justify-center gap-1 rounded-lg border has-checked:text-pink-800 border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-pink-600 has-checked:ring-1 has-checked:ring-pink-600 has-checked:bg-pink-100">
+                                    <svg class="size-5" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 14C10.6739 14 9.40215 13.4732 8.46447 12.5355C7.52678 11.5979 7 10.3261 7 9C7 7.67392 7.52678 6.40215 8.46447 5.46447C9.40215 4.52678 10.6739 4 12 4C13.3261 4 14.5979 4.52678 15.5355 5.46447C16.4732 6.40215 17 7.67392 17 9C17 10.3261 16.4732 11.5979 15.5355 12.5355C14.5979 13.4732 13.3261 14 12 14ZM12 14V21M9 18H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <p>Perempuan</p>
                                     <input type="radio" name="jenis_kelamin" value="Perempuan" id="perempuan" class="sr-only">
                                 </label>
                             </div>
@@ -173,45 +178,56 @@ if ($nis_akhir == null) {
 
                     <!-- Status Siswa -->
                     <div>
-                        <p class="block mb-2 font-medium">Status</p>
+                        <p class="block mb-2 font-semibold">Status</p>
                         <div class="grid grid-cols-2 gap-4">
+                            <!-- Status aktif -->
                             <div class="w-full">
-                                <label for="status_aktif" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
-                                    <p class="text-gray-700">Aktif</p>
-                                    <input type="radio" name="status_siswa" value="aktif" id="status_aktif" class="sr-only"
+                                <label for="status_aktif" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:text-green-800 has-checked:border-green-600 has-checked:ring-1 has-checked:ring-green-600 has-checked:bg-green-100">
+                                    <p>Aktif</p>
+                                    <input type="radio" name="status" value="aktif" id="status_aktif" class="sr-only"
                                         required
                                         oninvalid="this.setCustomValidity('Pilih Status terlebih dahulu')"
                                         oninput="this.setCustomValidity('')">
                                 </label>
                             </div>
+
+                            <!-- Status tidak aktif -->
                             <div class="w-full">
-                                <label for="status_tidak_aktif" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
-                                    <p class="text-gray-700">Tidak Aktif</p>
-                                    <input type="radio" name="status_siswa" value="tidak_aktif" id="status_tidak_aktif" class="sr-only">
+                                <label for="status_tidak_aktif" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:text-red-800 has-checked:border-red-600 has-checked:ring-1 has-checked:ring-red-600 has-checked:bg-red-100">
+                                    <p>Tidak Aktif</p>
+                                    <input type="radio" name="status" value="tidak aktif" id="status_tidak_aktif" class="sr-only">
                                 </label>
                             </div>
+
+                            <!-- Status pindah -->
                             <div class="w-full">
-                                <label for="status_pindah" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
-                                    <p class="text-gray-700">Pindah</p>
-                                    <input type="radio" name="status_siswa" value="pindah" id="status_pindah" class="sr-only">
+                                <label for="status_pindah" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:text-yellow-800 has-checked:border-yellow-600 has-checked:ring-1 has-checked:ring-yellow-600 has-checked:bg-yellow-100">
+                                    <p>Pindah</p>
+                                    <input type="radio" name="status" value="pindah" id="status_pindah" class="sr-only">
                                 </label>
                             </div>
+
+                            <!-- Status Lulus -->
                             <div class="w-full">
-                                <label for="status_lulus" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
-                                    <p class="text-gray-700">Lulus</p>
-                                    <input type="radio" name="status_siswa" value="lulus" id="status_lulus" class="sr-only">
+                                <label for="status_lulus" class="flex items-center justify-center gap-4 rounded-lg border border-gray-300 bg-white p-3 text-sm font-medium shadow-sm transition-colors hover:bg-zinc-50 has-checked:text-blue-800 has-checked:border-blue-600 has-checked:ring-1 has-checked:ring-blue-600 has-checked:bg-blue-100">
+                                    <p>Lulus</p>
+                                    <input type="radio" name="status" value="lulus" id="status_lulus" class="sr-only">
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block mb-2 font-medium font-poppins">password</label>
+                        <label class="block mb-2 font-semibold font-poppins">password</label>
                         <div class="w-full">
                             <input
                                 type="password"
                                 name="password"
-                                class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black ">
+                                placeholder="Silakan masukkan password"
+                                class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black"
+                                required
+                                oninvalid="this.setCustomValidity('Password tidak boleh kosong!')"
+                                oninput="this.setCustomValidity('')">
                         </div>
                     </div>
                 </div>
@@ -223,24 +239,31 @@ if ($nis_akhir == null) {
     <div class="w-full bg-white rounded-md shadow-md mt-16 mb-32">
         <!-- Header Identitas Orang Tua -->
         <div class="flex px-7 py-3.5 gap-3 text-gray-700 text-[18px] font-urbanist rounded-t-lg font-extrabold items-center bg-gray-100 border-2 border-gray-200">
-            <div class="flex p-2.5 bg-blue-100 rounded-md items-center justify-center">
-                <svg class="size-4" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.99935 5.83335C8.28801 5.83335 9.33268 4.78868 9.33268 3.50002C9.33268 2.21136 8.28801 1.16669 6.99935 1.16669C5.71068 1.16669 4.66602 2.21136 4.66602 3.50002C4.66602 4.78868 5.71068 5.83335 6.99935 5.83335Z" stroke="#0088FF" stroke-width="1.5" />
-                    <path d="M11.6663 10.2084C11.6663 11.658 11.6663 12.8334 6.99967 12.8334C2.33301 12.8334 2.33301 11.658 2.33301 10.2084C2.33301 8.75879 4.42251 7.58337 6.99967 7.58337C9.57684 7.58337 11.6663 8.75879 11.6663 10.2084Z" stroke="#0088FF" stroke-width="1.5" />
+            <div class="flex p-3 bg-blue-100 rounded-xl items-center justify-center">
+                <svg class="size-5" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.08334 5.24996C4.47011 5.24996 4.84105 5.09631 5.11454 4.82282C5.38803 4.54933 5.54167 4.1784 5.54167 3.79163C5.54167 3.40485 5.38803 3.03392 5.11454 2.76043C4.84105 2.48694 4.47011 2.33329 4.08334 2.33329C3.69656 2.33329 3.32563 2.48694 3.05214 2.76043C2.77865 3.03392 2.62501 3.40485 2.62501 3.79163C2.62501 4.1784 2.77865 4.54933 3.05214 4.82282C3.32563 5.09631 3.69656 5.24996 4.08334 5.24996ZM4.08334 6.41663C3.73862 6.41663 3.39727 6.34873 3.07879 6.21681C2.76031 6.08489 2.47094 5.89153 2.22718 5.64778C1.98343 5.40403 1.79007 5.11465 1.65815 4.79617C1.52624 4.47769 1.45834 4.13635 1.45834 3.79163C1.45834 3.44691 1.52624 3.10556 1.65815 2.78708C1.79007 2.4686 1.98343 2.17922 2.22718 1.93547C2.47094 1.69172 2.76031 1.49836 3.07879 1.36644C3.39727 1.23452 3.73862 1.16663 4.08334 1.16663C4.77953 1.16663 5.44721 1.44319 5.93949 1.93547C6.43178 2.42775 6.70834 3.09543 6.70834 3.79163C6.70834 4.48782 6.43178 5.1555 5.93949 5.64778C5.44721 6.14006 4.77953 6.41663 4.08334 6.41663ZM10.2083 7.58329C10.5178 7.58329 10.8145 7.46038 11.0333 7.24158C11.2521 7.02279 11.375 6.72605 11.375 6.41663C11.375 6.10721 11.2521 5.81046 11.0333 5.59167C10.8145 5.37288 10.5178 5.24996 10.2083 5.24996C9.89892 5.24996 9.60217 5.37288 9.38338 5.59167C9.16459 5.81046 9.04167 6.10721 9.04167 6.41663C9.04167 6.72605 9.16459 7.02279 9.38338 7.24158C9.60217 7.46038 9.89892 7.58329 10.2083 7.58329ZM10.2083 8.74996C9.5895 8.74996 8.99601 8.50413 8.55842 8.06654C8.12084 7.62896 7.87501 7.03546 7.87501 6.41663C7.87501 5.79779 8.12084 5.20429 8.55842 4.76671C8.99601 4.32913 9.5895 4.08329 10.2083 4.08329C10.8272 4.08329 11.4207 4.32913 11.8583 4.76671C12.2958 5.20429 12.5417 5.79779 12.5417 6.41663C12.5417 7.03546 12.2958 7.62896 11.8583 8.06654C11.4207 8.50413 10.8272 8.74996 10.2083 8.74996ZM11.6667 12.25V11.9583C11.6667 11.5715 11.513 11.2006 11.2395 10.9271C10.966 10.6536 10.5951 10.5 10.2083 10.5C9.82156 10.5 9.45063 10.6536 9.17714 10.9271C8.90365 11.2006 8.75001 11.5715 8.75001 11.9583V12.25H7.58334V11.9583C7.58334 11.6136 7.65124 11.2722 7.78315 10.9537C7.91507 10.6353 8.10843 10.3459 8.35218 10.1021C8.59594 9.85838 8.88532 9.66503 9.20379 9.53311C9.52227 9.40119 9.86362 9.33329 10.2083 9.33329C10.5531 9.33329 10.8944 9.40119 11.2129 9.53311C11.5314 9.66503 11.8207 9.85838 12.0645 10.1021C12.3082 10.3459 12.5016 10.6353 12.6335 10.9537C12.7654 11.2722 12.8333 11.6136 12.8333 11.9583V12.25H11.6667ZM5.83334 12.25V9.91663C5.83334 9.68681 5.78807 9.45925 5.70013 9.24693C5.61218 9.03461 5.48328 8.84169 5.32078 8.67919C5.15827 8.51669 4.96535 8.38778 4.75303 8.29984C4.54071 8.21189 4.31315 8.16663 4.08334 8.16663C3.85353 8.16663 3.62596 8.21189 3.41364 8.29984C3.20132 8.38778 3.0084 8.51669 2.8459 8.67919C2.6834 8.84169 2.5545 9.03461 2.46655 9.24693C2.3786 9.45925 2.33334 9.68681 2.33334 9.91663V12.25H1.16667V9.91663C1.16667 9.14308 1.47396 8.40121 2.02094 7.85423C2.56792 7.30725 3.30979 6.99996 4.08334 6.99996C4.85689 6.99996 5.59875 7.30725 6.14573 7.85423C6.69271 8.40121 7.00001 9.14308 7.00001 9.91663V12.25H5.83334Z" fill="#0088FF" />
                 </svg>
             </div>
-            <span>IDENTITAS ORANG TUA</span>
+            <span>IDENTITAS ORANG TUA / WALI</span>
         </div>
 
         <div class="p-8 space-y-6 font-poppins font-medium text-sm rounded-b-lg border-2 border-t-0 border-gray-200">
-            <div class="flex gap-4 w-full">
+            <!-- Catatan -->
+            <div class="mb-8 p-4 rounded-lg bg-yellow-50 border border-yellow-300 text-sm text-yellow-800">
+                <strong>Catatan:</strong>
+                Nama Ayah dan Ibu wajib diisi. Jika tidak tersedia, silakan isi data Wali.
+            </div>
+
+            <!-- Input Nama Wali -->
+            <div class="flex gap-6 w-full">
                 <!-- Input Nama Ayah -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Nama Ayah</label>
                     <input
                         type="text"
                         name="ayah"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        placeholder="Silakan masukkan nama ayah"
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black">
                 </div>
 
                 <!-- Input Nama Ibu -->
@@ -249,116 +272,128 @@ if ($nis_akhir == null) {
                     <input
                         type="text"
                         name="ibu"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        placeholder="Silakan masukkan nama ibu"
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black ">
                 </div>
 
+                <!-- Input Nama Wali -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Nama wali</label>
                     <input
                         type="text"
                         name="wali"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        placeholder="Silakan masukkan nama wali"
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black">
                 </div>
             </div>
 
-            <div class="flex gap-4 w-full">
-                <!-- Input Nama Ayah -->
+            <!-- Input Tempat Lahir Wali -->
+            <div class="flex gap-6 w-full">
+                <!-- Input Tempat Lahir Ayah -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Tempat Lahir Ayah</label>
                     <input
                         type="text"
                         name="tempat_lahir_ayah"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        placeholder="Silakan masukkan tempat lahir ayah"
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black">
                 </div>
 
-                <!-- Input Nama Ibu -->
+                <!-- Input Tempat Lahir Ibu -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Tempat Lahir Ibu</label>
                     <input
                         type="text"
                         name="tempat_lahir_ibu"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        placeholder="Silakan masukkan tempat lahir ibu"
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black">
                 </div>
 
+                <!-- Input Tempat Lahir Wali -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Tempat Lahir Wali</label>
                     <input
                         type="text"
                         name="tempat_lahir_wali"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        placeholder="Silakan masukkan tempat lahir wali"
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black">
                 </div>
             </div>
 
-            <div class="flex gap-4 w-full">
-                <!-- Input Nama Ayah -->
+            <!-- Pilih Tanggal Lahir Wali -->
+            <div class="flex gap-6 w-full">
+                <!-- Pilih Tanggal Lahir Ayah -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Tanggal Lahir Ayah</label>
                     <input
                         type="date"
                         name="tanggal_lahir_ayah"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black">
                 </div>
 
-                <!-- Input Nama Ibu -->
+                <!-- Pilih Tanggal Lahir Ibu -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Tanggal Lahir Ibu</label>
                     <input
                         type="date"
                         name="tanggal_lahir_ibu"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black">
                 </div>
 
+                <!-- Pilih Tanggal Lahir Wali -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Tanggal Lahir Wali</label>
                     <input
                         type="date"
                         name="tanggal_lahir_wali"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black">
                 </div>
             </div>
 
-            <div class="flex gap-4 w-full">
-                <!-- Input Nama Ayah -->
+            <!-- Input Pekerjaan Wali -->
+            <div class="flex gap-6 w-full">
+                <!-- Input Pekerjaan Ayah -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Pekerjaan Ayah</label>
                     <input
                         type="text"
                         name="pekerjaan_ayah"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        placeholder="Silakan masukkan pekerjaan ayah"
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black ">
                 </div>
 
-                <!-- Input Nama Ibu -->
+                <!-- Input Pekerjaan Ibu -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Pekerjaan Ibu</label>
                     <input
                         type="text"
                         name="pekerjaan_ibu"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        placeholder="Silakan masukkan pekerjaan ibu"
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black ">
                 </div>
 
+                <!-- Input Pekerjaan wali -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Pekerjaan wali</label>
                     <input
                         type="text"
                         name="pekerjaan_wali"
-                        class="w-full border border-gray-300 p-2.5 rounded-md box-border focus:outline-none focus:border-black ">
+                        placeholder="Silakan masukkan pekerjaan wali"
+                        class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black ">
                 </div>
             </div>
 
-            <div class="flex gap-4 w-full">
+            <!-- Input No. Telp Wali -->
+            <div class="flex gap-6 w-full">
                 <!-- Input No. Telp Ayah -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">No. Telp Ayah</label>
                     <div class="flex">
-                        <span class="bg-gray-100 border border-r-0 border-gray-300 px-3 flex items-center rounded-l-lg text-gray-800 font-semibold">
-                            +62
-                        </span>
-
                         <input
-                            type="text"
+                            type="number"
                             name="no_telp_ayah"
-                            placeholder="8123456789"
-                            class="w-full border border-gray-300 p-3 rounded-r-md box-border focus:outline-none focus:border-black ">
+                            placeholder="08123456789"
+                            class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black ">
                     </div>
                 </div>
 
@@ -366,42 +401,37 @@ if ($nis_akhir == null) {
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">No. Telp Ibu</label>
                     <div class="flex">
-                        <span class="bg-gray-100 border border-r-0 border-gray-300 px-3 flex items-center rounded-l-lg text-gray-800 font-semibold">
-                            +62
-                        </span>
-
                         <input
-                            type="text"
+                            type="number"
                             name="no_telp_ibu"
-                            placeholder="8123456789"
-                            class="w-full border border-gray-300 p-3 rounded-r-md box-border focus:outline-none focus:border-black ">
+                            placeholder="08123456789"
+                            class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black ">
                     </div>
                 </div>
 
+                <!-- Input No. Telp Wali -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">No. Telp Wali</label>
                     <div class="flex">
-                        <span class="bg-gray-100 border border-r-0 border-gray-300 px-3 flex items-center rounded-l-lg text-gray-800 font-semibold">
-                            +62
-                        </span>
-
                         <input
-                            type="text"
+                            type="number"
                             name="no_telp_wali"
-                            placeholder="8123456789"
-                            class="w-full border border-gray-300 p-3 rounded-r-md box-border focus:outline-none focus:border-black">
+                            placeholder="08123456789"
+                            class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black">
                     </div>
                 </div>
             </div>
 
-            <div class="flex gap-4 w-full">
+            <!-- Input Alamat Wali -->
+            <div class="flex gap-6 w-full">
                 <!-- Input Alamat Ayah -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Alamat Ayah</label>
                     <textarea
                         name="alamat_ayah"
+                        placeholder="Silakan masukkan alamat ayah"
                         class="w-full border border-gray-300 p-3.5 rounded-md box-border focus:outline-none focus:border-black "
-                        rows="2"></textarea>
+                        rows="3"></textarea>
                 </div>
 
                 <!-- Input Alamat Ibu -->
@@ -409,15 +439,19 @@ if ($nis_akhir == null) {
                     <label class="block mb-2 font-semibold">Alamat Ibu</label>
                     <textarea
                         name="alamat_ibu"
+                        placeholder="Silakan masukkan alamat ibu"
                         class="w-full border border-gray-300 p-3.5 rounded-md box-border focus:outline-none focus:border-black "
-                        rows="2"></textarea>
+                        rows="3"></textarea>
                 </div>
+
+                <!-- Input Alamat Wali -->
                 <div class="flex-1">
                     <label class="block mb-2 font-semibold">Alamat wali</label>
                     <textarea
                         name="alamat_wali"
+                        placeholder="Silakan masukkan alamat wali"
                         class="w-full border border-gray-300 p-3.5 rounded-md box-border focus:outline-none focus:border-black"
-                        rows="2"></textarea>
+                        rows="3"></textarea>
                 </div>
             </div>
         </div>
