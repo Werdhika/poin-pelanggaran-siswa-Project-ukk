@@ -45,11 +45,11 @@ $resultSiswa = mysqli_query($conn, "SELECT nis, nama_siswa FROM siswa");
     <div class="w-full mt-16 flex gap-8 px-28">
         <div class="flex-2">
             <div class="bg-white rounded-md shadow-md overflow-hidden">
-                <div class="flex px-7 py-3.5 gap-3 text-gray-700 text-[18px] font-urbanist rounded-t-lg font-extrabold   items-center bg-gray-100 border-2 border-gray-200">
-                    <div class="flex p-2.5 bg-blue-100 rounded-md items-center justify-center">
-                        <svg class="size-4" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.99935 5.83335C8.28801 5.83335 9.33268 4.78868 9.33268 3.50002C9.33268 2.21136 8.28801 1.16669 6.99935 1.16669C5.71068 1.16669 4.66602 2.21136 4.66602 3.50002C4.66602 4.78868 5.71068 5.83335 6.99935 5.83335Z" stroke="#0088FF" stroke-width="1.5" />
-                            <path d="M11.6663 10.2084C11.6663 11.658 11.6663 12.8334 6.99967 12.8334C2.33301 12.8334 2.33301 11.658 2.33301 10.2084C2.33301 8.75879 4.42251 7.58337 6.99967 7.58337C9.57684 7.58337 11.6663 8.75879 11.6663 10.2084Z" stroke="#0088FF" stroke-width="1.5" />
+                <div class="flex px-7 py-3.5 gap-3 text-gray-700 text-[18px] font-urbanist rounded-t-lg font-extrabold items-center bg-gray-100 border-2 border-gray-200">
+                    <div class="flex p-3 bg-blue-100 rounded-xl items-center justify-center">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.7333 5.84753L14.7117 6.90669M9.88166 9.01086L11.87 9.54086M9.98083 14.9717L10.7758 15.1842C13.0258 15.7842 14.1508 16.0834 15.0375 15.5742C15.9233 15.0659 16.225 13.9467 16.8275 11.71L17.68 8.54586C18.2833 6.30836 18.5842 5.19003 18.0725 4.30836C17.5608 3.4267 16.4367 3.12753 14.1858 2.52836L13.3908 2.31586C11.1408 1.71586 10.0158 1.41669 9.13 1.92586C8.24333 2.43419 7.94166 3.55336 7.33833 5.79003L6.48666 8.95419C5.88333 11.1917 5.58166 12.31 6.09416 13.1917C6.60583 14.0725 7.73083 14.3725 9.98083 14.9717Z" stroke="#0088FF" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M10 17.455L9.20666 17.6717C6.96166 18.2825 5.84 18.5884 4.955 18.0692C4.07166 17.5509 3.77 16.4101 3.16916 14.1292L2.31833 10.9025C1.71666 8.62172 1.41583 7.48088 1.92666 6.58255C2.36833 5.80505 3.33333 5.83338 4.58333 5.83338" stroke="#0088FF" stroke-width="1.5" stroke-linecap="round" />
                         </svg>
                     </div>
                     <span>PELANGGARAN SISWA</span>
@@ -59,7 +59,7 @@ $resultSiswa = mysqli_query($conn, "SELECT nis, nama_siswa FROM siswa");
                     <div class="flex gap-4 w-full">
                         <!-- NIS -->
                         <div class="flex-3">
-                            <label class="block mb-2 font-medium">NIS Siswa</label>
+                            <label class="block mb-2 font-semibold">NIS & Nama Siswa</label>
                             <div class="relative">
                                 <select
                                     name="nis"
@@ -81,38 +81,38 @@ $resultSiswa = mysqli_query($conn, "SELECT nis, nama_siswa FROM siswa");
 
                         <!-- Select Nama Siswa -->
                         <div class="flex-1">
-                            <label class="block mb-2 font-medium">Nomor Surat</label>
+                            <label class="block mb-2 font-semibold">Nomor Surat</label>
                             <input
-                                type="text"
+                                type="number"
                                 name="no_surat"
                                 placeholder="550"
                                 class="w-full border border-gray-300 p-3 rounded-md box-border"
                                 required
-                                oninvalid="this.setCustomValidity('Nama guru wajib diisi')"
+                                oninvalid="this.setCustomValidity('No. Surat tidak boleh kosong!')"
                                 oninput="this.setCustomValidity('')">
                         </div>
 
                         <div class="flex-2">
-                            <label class="block mb-2 font-medium">Tanggal Pemanggilan</label>
+                            <label class="block mb-2 font-semibold">Tanggal Pemanggilan</label>
                             <input
                                 type="date"
                                 name="tanggal_pemanggilan"
                                 placeholder="Silakan masukkan nomor surat"
                                 class="w-full border border-gray-300 p-3 rounded-md box-border"
                                 required
-                                oninvalid="this.setCustomValidity('Nama guru wajib diisi')"
+                                oninvalid="this.setCustomValidity('Pilih tanggal pemanggilan!')"
                                 oninput="this.setCustomValidity('')">
                         </div>
 
                         <div class="flex-1">
-                            <label class="block mb-2 font-medium">Jam</label>
+                            <label class="block mb-2 font-semibold">Jam</label>
                             <input
                                 type="time"
                                 name="jam"
                                 placeholder="Silakan masukkan nomor surat"
                                 class="w-full border border-gray-300 p-3 rounded-md box-border"
                                 required
-                                oninvalid="this.setCustomValidity('Nama guru wajib diisi')"
+                                oninvalid="this.setCustomValidity('Pilih Jam!')"
                                 oninput="this.setCustomValidity('')">
                         </div>
                     </div>
@@ -124,7 +124,7 @@ $resultSiswa = mysqli_query($conn, "SELECT nis, nama_siswa FROM siswa");
                             name="keperluan"
                             placeholder="Silakan masukkan keperluan."
                             class="w-full border border-gray-300 p-3 rounded-md box-border focus:outline-none focus:border-black"
-                            rows="3"></textarea>
+                            rows="4"></textarea>
                     </div>
                 </div>
             </div>

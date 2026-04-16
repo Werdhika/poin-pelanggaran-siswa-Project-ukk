@@ -90,10 +90,7 @@ $data = mysqli_fetch_assoc($resultSiswa);
                             <div class="relative">
                                 <select
                                     name="nis"
-                                    class="w-full border border-gray-300 p-3 pr-10 rounded-md appearance-none"
-                                    required
-                                    oninvalid="this.setCustomValidity('Nama ')"
-                                    oninput="this.setCustomValidity('')">
+                                    class="w-full border border-gray-300 p-3 pr-10 rounded-md appearance-none">
                                     <option value="" disabled selected hidden>Pilih NIS Siswa</option>
 
                                     <?php

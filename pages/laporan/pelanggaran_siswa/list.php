@@ -31,12 +31,12 @@ ORDER BY tanggal DESC
             <svg class="w-5 h-5 transition-transform duration-600 group-hover:rotate-180" viewBox="0 0 24 24" fill="none">
                 <path d="M19 12.998H13V18.998H11V12.998H5V10.998H11V4.99805H13V10.998H19V12.998Z" fill="currentColor" />
             </svg>
-            Tambah Data
+            Tambah Pelanggaran
         </a>
     </div>
 </div>
 
-<div class="relative overflow-visible border border-gray-200 rounded-lg shadow-sm mt-8">
+<div class="relative overflow-auto max-h-112 border border-gray-200 rounded-lg shadow-sm mt-8">
     <table class="w-full text-sm text-left">
         <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-1 shadow-md">
             <tr>
@@ -56,28 +56,35 @@ ORDER BY tanggal DESC
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
             ?>
-                    <tr class="bg-white hover:bg-gray-100 font-medium font-poppins transition text-sm">
+                    <tr class="bg-white hover:bg-gray-100 font-semibold font-poppins transition text-sm">
                         <td class="px-2 py-4 font-bold text-center"><?= $no++; ?></td>
 
-                        <td class="px-4 py-4">
+                        <td class="px-4 py-4 font-bold">
                             <div><?= date("d-m-Y", strtotime($row['tanggal'])) ?></div>
                             <div class="text-xs text-gray-500"><?= date("H:i:s", strtotime($row['tanggal'])) ?></div>
                         </td>
 
-                        <td class="px-4 py-4"><?= $row['nis']; ?></td>
+                        <td class="px-4 py-4 font-bold"><?= $row['nis']; ?></td>
 
                         <td class="px-4 py-4"><?= $row['nama_siswa']; ?></td>
 
                         <td class="px-0 py-4 max-w-80"><?= $row['jenis']; ?></td>
 
-                        <td class="px-4 py-4 font-bold text-red-600">
-                            <?= $row['total_point']; ?> Point
+                        <td class="px-4 py-4 font-bold">
+                            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-3xl border-2 text-[12px] 
+                            <?= match (true) {
+                                $row['total_point'] < 25 => 'bg-green-50 border-green-600',
+                                $row['total_point'] < 50 => 'bg-yellow-50 border-yellow-600',
+                                $row['total_point'] < 100 => 'bg-orange-50 border-orange-600',
+                                default => 'bg-red-100 border-red-600'
+                            } ?>
+                            ">
+                                <?= $row['total_point']; ?> Point
                         </td>
 
                         <td class="px-4 py-4 text-center">
                             <a href="pages/laporan/detail_pelanggaran.php?nis=<?= $row['nis']; ?>"
-                                class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white rounded-lg 
-        bg-blue-600 hover:bg-blue-700 transition shadow-sm">
+                                class=" inline-flex items-center rounded-lg py-3 px-4 gap-1.5 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300">
 
                                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
                                     <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z"

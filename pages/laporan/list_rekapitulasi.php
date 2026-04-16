@@ -30,7 +30,7 @@ LEFT JOIN (
     GROUP BY ps.nis
 ) p 
     ON a.nis = p.nis
-WHERE a.status = 'Masih Proses'";
+WHERE a.status = 'Selesai'";
 $query_perjanjian_siswa = mysqli_query($conn, $query_siswa);
 
 // ----------------------------------------------------------------------------------------------------------

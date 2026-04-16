@@ -3,33 +3,34 @@ define('ROOTPATH', $_SERVER['DOCUMENT_ROOT'] . '/poin_pelanggaran_siswa');
 include ROOTPATH . "/includes/header.php";
 include ROOTPATH . "/config/config.php";
 
-if (isset($_GET['cari']) && $_GET['cari'] !== '') {
-    $cari = mysqli_real_escape_string($conn, $_GET['cari']);
-    $result = mysqli_query($conn, "SELECT 
+$cari = isset($_GET['cari']) ? trim($_GET['cari']) : '';
+
+$sql = "SELECT 
             sp.*,
             a.nis,
-            a.nama_siswa,
-            sp.alasan_pindah
-        FROM surat_pindah sp
-        JOIN siswa a ON sp.nis = a.nis
-        WHERE a.nama_siswa != NULL
-          AND (a.nama_siswa LIKE '%$cari%' OR a.nis LIKE '%$cari%' OR sp.no_surat LIKE '%$cari%')
-        ORDER BY sp.tanggal_pembuatan_surat DESC
-    ");
-} else {
-
-    $result = mysqli_query($conn, "SELECT 
-            sp.*,
             a.nama_siswa,
             sp.sekolah_tujuan,
             sp.alasan_pindah
         FROM surat_pindah sp
         JOIN siswa a ON sp.nis = a.nis
-    ");
+        WHERE a.nama_siswa IS NOT NULL";
+
+if ($cari !== '') {
+    $cari = mysqli_real_escape_string($conn, $cari);
+    $sql .= " AND (
+                a.nama_siswa LIKE '%$cari%'
+                OR a.nis LIKE '%$cari%'
+                OR sp.no_surat LIKE '%$cari%'
+            )";
 }
 
-// print_r($result);
-// exit;
+$sql .= " ORDER BY sp.tanggal_pembuatan_surat DESC";
+
+$result = mysqli_query($conn, $sql);
+
+if (!$result) {
+    die(mysqli_error($conn));
+}
 
 
 $result_siswa = mysqli_query($conn, "
@@ -91,9 +92,9 @@ $bulan = [
             <form action="" method="get" class="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <datalist id="nama_siswa">
                     <?php while ($row_siswa = mysqli_fetch_assoc($result_siswa)) { ?>
-                        <option value="<?= htmlspecialchars($row_siswa['nis']) ?>">
-                        <option value="<?= htmlspecialchars($row_siswa['nama_siswa']) ?>">
-                        <?php } ?>
+                        <option value="<?= htmlspecialchars($row_siswa['nis']) ?>"></option>
+                        <option value="<?= htmlspecialchars($row_siswa['nama_siswa']) ?>"></option>
+                    <?php } ?>
                 </datalist>
 
                 <input
@@ -111,7 +112,7 @@ $bulan = [
                     Cari
                 </button>
 
-                <a href=""
+                <a href="/poin_pelanggaran_siswa/pages/laporan/surat_pindah/list.php"
                     class="inline-flex items-center justify-center rounded-lg py-2.5 px-4 text-sm text-white font-poppins font-medium bg-red-500 hover:bg-red-600 shadow-sm transition">
                     Reset
                 </a>
@@ -129,7 +130,7 @@ $bulan = [
                         <th class="px-4 py-5">Nama</th>
                         <th class="px-4 py-5">Sekolah Tujuan</th>
                         <th class="px-4 py-5">Alasan Pindah</th>
-                        <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
+                        <?php if ($_SESSION['user']['role'] == 'Guru BK' || 'Wakasek'): ?>
                             <th class="px-4 py-5 text-center">Aksi</th>
                         <?php endif; ?>
                     </tr>
@@ -154,7 +155,7 @@ $bulan = [
                                 $tgl = $pecah[0] . ' ' . $bulan[$pecah[1]] . ' ' . $pecah[2];
                             }
                         ?>
-                            <tr class="bg-white hover: bg-gray-100 font-medium font-poppins transition text-sm align-top">
+                            <tr class="bg-white hover:bg-gray-100 font-medium font-poppins transition text-sm align-middle">
                                 <td class="px-2 py-4 font-bold text-center"><?= $no++; ?></td>
 
                                 <td class="px-4 py-4">

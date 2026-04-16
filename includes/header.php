@@ -103,9 +103,11 @@ date_default_timezone_set('Asia/Makassar'); // untuk Bali (WITA)
                                 </li>
                                 <?php endif; ?>
 
+                                <?php if ($guru) : ?>
                                 <li>
                                     <a href="pages/laporan/pelanggaran_siswa/list.php" class="text-gray-500 text-sm font-poppins transition hover:text-black">Pelanggaran Siswa</a>
                                 </li>
+                                <?php endif; ?>
 
                             <?php if ($guru) : ?>
                                 <!-- Dropdown Surat & Laporan -->

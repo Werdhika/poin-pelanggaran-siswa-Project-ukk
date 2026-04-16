@@ -16,8 +16,7 @@ $result_surat = mysqli_query($conn, "SELECT
 /* =========================
    DATA SISWA > 50 POIN
 =========================*/
-$result = mysqli_query($conn, "
-    SELECT 
+$result = mysqli_query($conn, " SELECT 
         s.nis,
         s.nama_siswa,
         GROUP_CONCAT(j.jenis SEPARATOR ', ') AS jenis_pelanggaran,
@@ -60,7 +59,7 @@ $bulan = [
     ): ?>
         <div>
             <a href="pages/laporan/panggilan_orang_tua/daftar_siswa/init.php"
-                class="group inline-flex items-center gap-2 rounded-lg bg-linear-to-r from-blue-600 to-indigo-600 px-6 py-4 text-sm font-medium text-white shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300 hover:from-blue-700 hover:to-indigo-700">
+                class="group inline-flex items-center rounded-lg py-4 px-6 gap-1.5 text-sm text-white font-poppins font-medium bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-[0_3px_4px_rgba(59,130,246,0.4)] transition duration-300">
                 <svg class="h-5 w-5 transition-transform duration-500 group-hover:rotate-180" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M19 12.998H13V18.998H11V12.998H5V10.998H11V4.99805H13V10.998H19V12.998Z" fill="currentColor" />
@@ -78,14 +77,14 @@ $bulan = [
     <div class="overflow-x-auto">
         <div class="max-h-[400px] overflow-y-auto">
             <table class="w-full text-left text-sm">
-                <thead class="sticky top-0 z-0 bg-gray-100 text-sm text-gray-700 shadow-sm">
+                <thead class="sticky top-0 z-0 bg-gray-100 font-poppins text-sm text-gray-700 shadow-sm">
                     <tr>
-                        <th class="px-3 py-4 text-center font-bold">NO</th>
-                        <th class="px-4 py-4 font-semibold">NIS</th>
-                        <th class="px-4 py-4 font-semibold">Nama</th>
-                        <th class="px-4 py-4 font-semibold">Jenis Pelanggaran</th>
-                        <th class="px-4 py-4 font-semibold">Poin</th>
-                        <th class="px-4 py-4 font-semibold">Aksi</th>
+                        <th class="px-3 py-5 text-center font-bold">NO</th>
+                        <th class="px-4 py-5 font-bold">NIS</th>
+                        <th class="px-4 py-5 font-bold">Nama</th>
+                        <th class="px-4 py-5 font-bold">Jenis Pelanggaran</th>
+                        <th class="px-4 py-5 font-bold">Poin</th>
+                        <th class="px-4 py-5 font-bold">Aksi</th>
                     </tr>
                 </thead>
 
@@ -97,14 +96,25 @@ $bulan = [
                     ?>
                             <tr class="font-poppins text-sm transition hover:bg-gray-50">
                                 <td class="px-3 py-4 text-center text-[16px] font-bold"><?= $no++; ?></td>
-                                <td class="px-4 py-4 font-medium"><?= htmlspecialchars($row['nis']); ?></td>
-                                <td class="px-4 py-4 font-medium"><?= htmlspecialchars($row['nama_siswa']); ?></td>
-                                <td class="px-4 py-4 font-medium"><?= htmlspecialchars($row['jenis_pelanggaran']); ?></td>
-                                <td class="px-4 py-4 font-medium"><?= htmlspecialchars($row['point']); ?></td>
+                                <td class="px-4 py-4 font-bold"><?= htmlspecialchars($row['nis']); ?></td>
+                                <td class="px-4 py-4 font-semibold"><?= htmlspecialchars($row['nama_siswa']); ?></td>
+                                <td class="px-4 py-4 font-semibold max-w-80"><?= htmlspecialchars($row['jenis_pelanggaran']); ?></td>
+                                <td class="px-4 py-4 font-semibold">
+                                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-3xl border-2 text-[12px] 
+                                        <?= match (true) {
+                                            $row['point'] < 25 => 'bg-green-50 border-green-600',
+                                            $row['point'] < 50 => 'bg-yellow-50 border-yellow-600',
+                                            $row['point'] < 100 => 'bg-orange-50 border-orange-600',
+                                            default => 'bg-red-100 border-red-600'
+                                        } ?>
+                                    ">
+                                        <?= htmlspecialchars($row['point'] . ' ' . 'poin'); ?>
+                                </td>
+
                                 <td class="px-4 py-4">
                                     <div class="flex flex-wrap gap-2">
                                         <a href="pages/laporan/detail_pelanggaran.php?nis=<?= urlencode($row['nis']); ?>"
-                                            class="inline-flex items-center rounded-lg bg-slate-600 px-4 py-3 text-sm font-medium text-white shadow transition duration-300 hover:bg-slate-700">
+                                            class="inline-flex items-center rounded-lg bg-slate-600 px-4 py-4 text-sm font-medium text-white shadow transition duration-300 hover:bg-slate-700">
                                             Detail Pelanggaran
                                         </a>
 
@@ -114,7 +124,7 @@ $bulan = [
                                             $_SESSION['user']['role'] == 'Wakasek'
                                         ): ?>
                                             <a href="pages/laporan/panggilan_orang_tua/daftar_siswa/add.php?nis=<?= urlencode($row['nis']); ?>"
-                                                class="inline-flex items-center rounded-lg bg-linear-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-medium text-white shadow transition duration-300 hover:from-blue-700 hover:to-indigo-700">
+                                                class="inline-flex items-center rounded-lg bg-linear-to-r from-blue-600 to-indigo-600 px-4 py-4 text-sm font-medium text-white shadow transition duration-300 hover:from-blue-700 hover:to-indigo-700">
                                                 Cetak Surat
                                             </a>
                                         <?php endif; ?>
@@ -148,18 +158,18 @@ $bulan = [
 <!-- ===================================================== -->
 <!-- TABEL RIWAYAT SURAT -->
 <!-- ===================================================== -->
-<div class="mt-12 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+<div class="mt-12 mb-8 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
     <div class="overflow-x-auto">
         <div class="max-h-[400px] overflow-y-auto">
             <table class="w-full text-left text-sm">
-                <thead class="sticky top-0 z-0 bg-gray-100 text-sm text-gray-700 shadow-sm">
+                <thead class="sticky top-0 z-0 bg-gray-100 font-poppins text-sm text-gray-700 shadow-sm">
                     <tr>
                         <th class="px-3 py-4 text-center font-bold">NO</th>
-                        <th class="px-4 py-4 font-semibold">Tanggal <br> Pembuatan Surat</th>
-                        <th class="px-4 py-4 font-semibold">Tanggal Pemanggilan <br> Ortu/Wali</th>
-                        <th class="px-4 py-4 font-semibold">Nomor Surat</th>
-                        <th class="px-4 py-4 font-semibold">Nama Siswa</th>
-                        <th class="px-4 py-4 font-semibold">Keperluan</th>
+                        <th class="px-4 py-4 font-bold">Tanggal <br> Pembuatan Surat</th>
+                        <th class="px-4 py-4 font-bold">Tanggal Pemanggilan <br> Ortu/Wali</th>
+                        <th class="px-4 py-4 font-bold">Nomor Surat</th>
+                        <th class="px-4 py-4 font-bold">Nama Siswa</th>
+                        <th class="px-4 py-4 font-bold">Keperluan</th>
                         <?php if (
                             $_SESSION['user']['role'] == 'Guru BK' ||
                             $_SESSION['user']['role'] == 'Kepala Sekolah' ||
@@ -170,7 +180,7 @@ $bulan = [
                     </tr>
                 </thead>
 
-                <tbody class="divide-y divide-gray-200">
+                <tbody class="divide-y divide-gray-200 font-semibold">
                     <?php
                     $no = 1;
                     if (mysqli_num_rows($result_surat) > 0) {
@@ -179,13 +189,13 @@ $bulan = [
                             <tr class="font-poppins text-sm transition hover:bg-gray-50">
                                 <td class="px-3 py-4 text-center text-[16px] font-bold"><?= $no++; ?></td>
 
-                                <td class="px-4 py-4">
+                                <td class="px-4 py-4 font-bold">
                                     <?= date("d", strtotime($row['tanggal_pembuatan_surat'])) ?>
                                     <?= $bulan[date("F", strtotime($row['tanggal_pembuatan_surat']))] ?>
                                     <?= date("Y", strtotime($row['tanggal_pembuatan_surat'])) ?>
                                 </td>
 
-                                <td class="px-4 py-4">
+                                <td class="px-4 py-4 font-bold">
                                     <div>
                                         <?= date("d", strtotime($row['tanggal_pemanggilan'])) ?>
                                         <?= $bulan[date("F", strtotime($row['tanggal_pemanggilan']))] ?>
@@ -196,7 +206,7 @@ $bulan = [
                                     </div>
                                 </td>
 
-                                <td class="px-4 py-4">
+                                <td class="px-4 py-4 font-bold">
                                     <?= htmlspecialchars($row['no_surat']); ?>/SMK/TI/BG/<?= date("Y", strtotime($row['tanggal_pembuatan_surat'])) ?>
                                 </td>
 
@@ -205,7 +215,7 @@ $bulan = [
                                     <div class="text-[14px] text-blue-500"><?= htmlspecialchars($row['nis']); ?></div>
                                 </td>
 
-                                <td class="px-4 py-4"><?= htmlspecialchars($row['keperluan']); ?></td>
+                                <td class="px-4 py-4 max-w-50"><?= htmlspecialchars($row['keperluan']); ?></td>
 
                                 <?php if (
                                     $_SESSION['user']['role'] == 'Guru BK' ||
@@ -214,7 +224,7 @@ $bulan = [
                                 ): ?>
                                     <td class="px-4 py-4 text-center">
                                         <a href="pages/cetak/surat_panggilan_ortu.php?nis=<?= urlencode($row['nis']); ?>"
-                                            class="inline-flex items-center rounded-lg bg-linear-to-r from-emerald-500 to-green-600 px-4 py-3 text-sm font-medium text-white shadow transition duration-300 hover:from-emerald-600 hover:to-green-700">
+                                            class="inline-flex items-center rounded-lg bg-linear-to-r from-emerald-500 to-green-600 px-4 py-4 text-sm font-medium text-white shadow transition duration-300 hover:from-emerald-600 hover:to-green-700">
                                             Cetak Ulang
                                         </a>
                                     </td>

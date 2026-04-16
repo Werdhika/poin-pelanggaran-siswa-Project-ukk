@@ -9,6 +9,11 @@ $namaUser = $_SESSION['user']['nama'] ?? 'Guru';
 $roleUser = $_SESSION['user']['role'] ?? 'guru';
 $kodeGuru = $_SESSION['user']['kode_guru'] ?? null;
 
+// echo "<pre>";
+// var_dump($_SESSION['user']);
+// echo "</pre>";
+// exit;
+
 function esc($value)
 {
     return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
@@ -50,6 +55,18 @@ if ($kodeGuru) {
         JOIN kelas k ON k.id_kelas = s.id_kelas
         WHERE k.kode_guru = '" . mysqli_real_escape_string($conn, (string) $kodeGuru) . "'");
 }
+
+// echo "<pre>";
+// echo "Kode Guru: ";
+// var_dump($kodeGuru);
+
+// $q = mysqli_query($conn, "SELECT * FROM kelas WHERE kode_guru = '$kodeGuru'");
+// echo "Jumlah kelas: " . mysqli_num_rows($q) . "\n";
+// while ($r = mysqli_fetch_assoc($q)) {
+//     print_r($r);
+// }
+// echo "</pre>";
+// exit;
 
 $recentSql = "SELECT ps.tanggal, s.nama_siswa, s.nis, jp.jenis, jp.poin, ps.keterangan
     FROM pelanggaran_siswa ps

@@ -34,13 +34,14 @@ if ($role === 'guru') {
             session_regenerate_id(true);
 
             $_SESSION['user'] = [
-                'login'    => true,
-                'role'     => $data['role'],
-                'id'       => $data['kode_guru'],
-                'nama'     => $data['nama'],
-                'username' => $data['username'],
-                'jabatan'  => $data['jabatan'],
-                'status'   => $data['status']
+                'login'     => true,
+                'role'      => $data['role'],
+                'id'        => $data['kode_guru'],
+                'kode_guru' => $data['kode_guru'],
+                'nama'      => $data['nama'],
+                'username'  => $data['username'],
+                'jabatan'   => $data['jabatan'],
+                'status'    => $data['status']
             ];
 
             header("Location: /poin_pelanggaran_siswa/pages/guru/dashboard.php");

@@ -19,8 +19,7 @@ $result_50 = mysqli_query($conn, "
         SUM(j.poin) BETWEEN 25 AND 50
 ");
 
-$result_list = mysqli_query($conn, "
-    SELECT 
+$result_list = mysqli_query($conn, "SELECT 
         a.*,
         b.nama_siswa,
         d.tingkat
@@ -31,7 +30,8 @@ $result_list = mysqli_query($conn, "
     WHERE a.nis IS NOT NULL
 ");
 
-$data_perjanjian_ortu = mysqli_fetch_assoc($result_list);
+// $data_perjanjian_siswa = mysqli_fetch_assoc($result_list);
+
 ?>
 
 <div class="flex justify-between">
@@ -63,10 +63,10 @@ $data_perjanjian_ortu = mysqli_fetch_assoc($result_list);
             <thead class="font-poppins font-medium bg-gray-100 text-sm text-gray-700 sticky top-0 z-0 shadow-md">
                 <tr>
                     <th class="px-2 py-5 text-center">NO</th>
-                    <th class="px-4 py-5">Tanggal Pembuatan Surat</th>
                     <th class="px-4 py-5">NIS</th>
                     <th class="px-4 py-5">Nama Siswa</th>
-                    <th class="px-4 py-5">Tingkat</th>
+                    <th class="px-4 py-5">Jenis Pelanggaran</th>
+                    <th class="px-4 py-5">Poin</th>
                     <th class="px-4 py-5 text-center">Aksi</th>
                 </tr>
             </thead>
@@ -84,8 +84,18 @@ $data_perjanjian_ortu = mysqli_fetch_assoc($result_list);
                             <td class="px-2 py-4 text-center"><?= $no++; ?></td>
                             <td class="px-4 py-4"><?= $row['nis']; ?></td>
                             <td class="px-4 py-4"><?= $row['nama_siswa']; ?></td>
-                            <td class="px-4 py-4"><?= $row['jenis_pelanggaran']; ?></td>
-                            <td class="px-4 py-4"><?= $row['point']; ?></td>
+                            <td class="px-4 py-4 max-w-80"><?= $row['jenis_pelanggaran']; ?></td>
+                            <td class="px-4 py-4 font-bold">
+                                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-3xl border-2 text-xs 
+                            <?= match (true) {
+                                $row['point'] < 25 => 'bg-green-50 border-green-600',
+                                $row['point'] < 50 => 'bg-yellow-50 border-yellow-600',
+                                $row['point'] < 100 => 'bg-orange-50 border-orange-600',
+                                default => 'bg-red-100 border-red-600'
+                            } ?>
+                            ">
+                                    <?= $row['point'] . ' ' . 'Poin'; ?>
+                            </td>
 
                             <td class="px-4 py-4 flex flex-col gap-4">
 
@@ -96,7 +106,7 @@ $data_perjanjian_ortu = mysqli_fetch_assoc($result_list);
                                     </a>
 
                                     <?php
-                                    $resultNis = mysqli_query($conn, "SELECT COUNT(*) as data FROM perjanjian_orang_tua WHERE nis='" . $row['nis'] . "'");
+                                    $resultNis = mysqli_query($conn, "SELECT COUNT(*) as data FROM perjanjian_siswa WHERE nis='" . $row['nis'] . "'");
                                     $count_nis = mysqli_fetch_assoc($resultNis);
                                     if ($count_nis['data'] == 0):
                                     ?>
@@ -131,21 +141,21 @@ $data_perjanjian_ortu = mysqli_fetch_assoc($result_list);
                                 $count_foto = mysqli_fetch_assoc($resultfoto);
                                 if (empty($count_foto['data'])):
                                 ?>
-                                <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
-                                    <form action="process/laporan_surat_perjanjian_siswa/upload.php" method="POST" enctype="multipart/form-data" class="w-full">
-                                        <input type="hidden" name="nis" value="<?= $row['nis']; ?>">
-                                        <div class="border border-gray-300 rounded-lg p-4 bg-gray-50">
-                                            <div class="mb-3">
-                                                <h3 class="text-sm font-semibold text-gray-700 font-poppins">
-                                                    Upload Bukti / Gambar
-                                                </h3>
+                                    <?php if ($_SESSION['user']['role'] == 'Guru BK'): ?>
+                                        <form action="process/laporan_surat_perjanjian_siswa/upload.php" method="POST" enctype="multipart/form-data" class="w-full">
+                                            <input type="hidden" name="nis" value="<?= $row['nis']; ?>">
+                                            <div class="border border-gray-300 rounded-lg p-4 bg-gray-50">
+                                                <div class="mb-3">
+                                                    <h3 class="text-sm font-semibold text-gray-700 font-poppins">
+                                                        Upload Bukti / Gambar
+                                                    </h3>
+                                                </div>
+                                                <div class="flex items-center gap-3">
+                                                    <input type="file" name="foto_dokumen" required>
+                                                    <input type="submit" name="submit" value="Upload">
+                                                </div>
                                             </div>
-                                            <div class="flex items-center gap-3">
-                                                <input type="file" name="foto_dokumen" required>
-                                                <input type="submit" name="submit" value="Upload">
-                                            </div>
-                                        </div>
-                                    </form>
+                                        </form>
                                     <?php endif; ?>
                                 <?php endif; ?>
                             </td>
